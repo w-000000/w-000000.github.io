@@ -1539,3 +1539,394 @@ button[type="reset"] {
         width: auto;
     }
 }
+
+/* 13. 메인 페이지 다크 모드 버튼 */
+.theme-toggle-button {
+    position: fixed;
+    top: 18px;
+    right: 18px;
+    z-index: 2000;
+    width: auto;
+    min-width: 120px;
+    margin: 0;
+    padding: 9px 14px;
+    color: #25324a;
+    font-size: 14px;
+    font-weight: bold;
+    background: rgba(255, 255, 255, 0.92);
+    border: 1px solid rgba(255, 255, 255, 0.7);
+    border-radius: 20px;
+    box-shadow: 0 5px 15px rgba(24, 52, 84, 0.2);
+    cursor: pointer;
+    backdrop-filter: blur(8px);
+    transition:
+        background 0.2s,
+        color 0.2s,
+        transform 0.2s;
+}
+
+.theme-toggle-button:hover {
+    color: #25324a;
+    background: white;
+    transform: translateY(-2px);
+}
+
+/* 모든 페이지 다크 모드 */
+html.dark-mode,
+html.dark-mode body {
+    min-height: 100%;
+    color: #e4eaf2;
+    background: #111827;
+}
+
+html.dark-mode .site-page {
+    color: #e4eaf2;
+    background:
+        radial-gradient(
+            circle at 10% 20%,
+            rgba(62, 112, 169, 0.18),
+            transparent 28%
+        ),
+        radial-gradient(
+            circle at 88% 32%,
+            rgba(224, 107, 69, 0.1),
+            transparent 25%
+        ),
+        linear-gradient(
+            180deg,
+            #111827,
+            #172033
+        );
+}
+
+html.dark-mode .site-page::before {
+    background: rgba(82, 133, 187, 0.08);
+}
+
+html.dark-mode .site-page::after {
+    background: rgba(224, 107, 69, 0.06);
+}
+
+/* 헤더 */
+html.dark-mode .site-page > header {
+    background:
+        linear-gradient(
+            135deg,
+            #172b46,
+            #24476f 55%,
+            #315f8d
+        );
+}
+
+/* 내비게이션 */
+html.dark-mode .home-page > nav,
+html.dark-mode .holiday-nav,
+html.dark-mode .portfolio-nav {
+    background: rgba(20, 36, 58, 0.96);
+}
+
+/* 공통 콘텐츠 박스 */
+html.dark-mode .site-page > main,
+html.dark-mode .home-page .main-content,
+html.dark-mode .home-page .sidebar {
+    color: #e4eaf2;
+    background: #1d2939;
+    border-color: #34465d;
+    box-shadow:
+        0 18px 45px
+        rgba(0, 0, 0, 0.28);
+}
+
+/* 제목 */
+html.dark-mode .site-page h2 {
+    color: #b9d8f7;
+    background:
+        linear-gradient(
+            90deg,
+            #24364d,
+            #1e2c3f
+        );
+    border-left-color: #6f9dcc;
+    border-bottom-color: #3b4e66;
+}
+
+html.dark-mode .site-page h3,
+html.dark-mode .site-page h4 {
+    color: #b9d8f7;
+}
+
+/* 일반 텍스트 */
+html.dark-mode .site-page p,
+html.dark-mode .site-page li,
+html.dark-mode .site-page dt,
+html.dark-mode .site-page dd,
+html.dark-mode .site-page label,
+html.dark-mode .site-page figcaption,
+html.dark-mode .site-page small {
+    color: #d8e1ec;
+}
+
+/* 링크 */
+html.dark-mode .site-page a {
+    color: #9bc8f4;
+}
+
+html.dark-mode .site-page a:hover {
+    color: #ff9a76;
+}
+
+/* 바로가기 메뉴 */
+html.dark-mode .shortcut-list a {
+    color: #b9d8f7;
+    background:
+        linear-gradient(
+            145deg,
+            #24364d,
+            #1b293b
+        );
+    border-color: #40566f;
+}
+
+html.dark-mode .shortcut-list a:hover {
+    color: white;
+    background:
+        linear-gradient(
+            145deg,
+            #2d4562,
+            #22364d
+        );
+}
+
+/* 공통 카드 */
+html.dark-mode .home-page article,
+html.dark-mode .profile-info-card,
+html.dark-mode .timeline-item,
+html.dark-mode .routine-card,
+html.dark-mode .trip-gallery figure,
+html.dark-mode .audio-card,
+html.dark-mode .video-card,
+html.dark-mode .table-card,
+html.dark-mode .project-card,
+html.dark-mode .skill-card,
+html.dark-mode .comment-card,
+html.dark-mode fieldset {
+    color: #d8e1ec;
+    background:
+        linear-gradient(
+            145deg,
+            #24364d,
+            #1d2c40
+        );
+    border-color: #3e526a;
+}
+
+/* 입력창 */
+html.dark-mode input,
+html.dark-mode select,
+html.dark-mode textarea {
+    color: #e4eaf2;
+    background: #162235;
+    border-color: #40556f;
+}
+
+html.dark-mode input::placeholder,
+html.dark-mode textarea::placeholder {
+    color: #8fa1b6;
+}
+
+/* 댓글 안내 및 빈 목록 */
+html.dark-mode .comment-login-guide,
+html.dark-mode .comment-empty,
+html.dark-mode .comment-loading,
+html.dark-mode .comment-error {
+    background: #202f43;
+    border-color: #40566f;
+}
+
+/* 표 */
+html.dark-mode .class-page table {
+    background: #1d2939;
+}
+
+html.dark-mode .class-page tbody td {
+    color: #d8e1ec;
+    background: #1d2939;
+}
+
+html.dark-mode .class-page tbody tr:nth-child(even) td {
+    background: #233247;
+}
+
+html.dark-mode .class-page tbody th {
+    color: #b9d8f7;
+    background: #26384d;
+}
+
+/* 푸터 */
+html.dark-mode .site-page > footer {
+    color: #d8e1ec;
+    background:
+        linear-gradient(
+            135deg,
+            #1b293b,
+            #152234
+        );
+    border-top-color: #33475f;
+}
+
+/* 다크 모드 버튼 */
+html.dark-mode .theme-toggle-button {
+    color: #f1f5f9;
+    background: rgba(30, 41, 59, 0.92);
+    border-color: #52657d;
+}
+
+html.dark-mode .theme-toggle-button:hover {
+    color: white;
+    background: #26384d;
+}
+
+/* 모바일 */
+@media (max-width: 650px) {
+    .theme-toggle-button {
+        top: 10px;
+        right: 10px;
+        min-width: 0;
+        padding: 7px 10px;
+        font-size: 12px;
+    }
+}
+/* 다크 모드에서 남아 있는 밝은 카드들 */
+html.dark-mode .profile-card-list li,
+html.dark-mode .profile-goal-list li,
+html.dark-mode .keyword-list > div,
+html.dark-mode .portfolio-intro,
+html.dark-mode .goal-message,
+html.dark-mode .skill-card li,
+html.dark-mode .trip-card,
+html.dark-mode .trip-gallery figcaption,
+html.dark-mode .comment-login-guide,
+html.dark-mode .comment-empty,
+html.dark-mode .comment-loading,
+html.dark-mode .comment-error {
+    color: #d8e1ec;
+    background: #24364d;
+    border-color: #40566f;
+}
+
+/* 카드 안 제목 */
+html.dark-mode .profile-card-list strong,
+html.dark-mode .profile-goal-list strong,
+html.dark-mode .keyword-list dt,
+html.dark-mode .skill-card h3,
+html.dark-mode .trip-gallery figcaption strong,
+html.dark-mode .portfolio-intro strong,
+html.dark-mode .goal-message strong {
+    color: #b9d8f7;
+}
+
+/* 프로필 설명 카드 */
+html.dark-mode .profile-info-card,
+html.dark-mode .timeline-item,
+html.dark-mode .routine-card {
+    color: #d8e1ec;
+    background:
+        linear-gradient(
+            145deg,
+            #24364d,
+            #1d2c40
+        );
+    border-color: #3e526a;
+}
+
+/* 포트폴리오 기술 목록 */
+html.dark-mode .skill-card {
+    color: #d8e1ec;
+    background: #1f3045;
+    border-color: #40566f;
+}
+
+html.dark-mode .skill-card li {
+    color: #d8e1ec;
+    background: #26394f;
+    border-color: #455b73;
+}
+
+html.dark-mode .skill-card li span {
+    color: white;
+    background: #4e80b5;
+}
+
+/* 여행 카드 */
+html.dark-mode .trip-gallery figure {
+    background: #1f3045;
+    border-color: #40566f;
+}
+
+html.dark-mode .trip-gallery figcaption {
+    background: #24364d;
+}
+
+html.dark-mode .trip-gallery figcaption span,
+html.dark-mode .trip-gallery figcaption p {
+    color: #d8e1ec;
+}
+
+/* 자기소개, 목표 문단 */
+html.dark-mode .portfolio-intro,
+html.dark-mode .goal-message {
+    background:
+        linear-gradient(
+            145deg,
+            #24364d,
+            #1d2c40
+        );
+}
+
+html.dark-mode .portfolio-intro p,
+html.dark-mode .goal-message p {
+    color: #d8e1ec;
+}
+
+/* 수상 카드 */
+html.dark-mode .award-card {
+    color: #f4e7bd;
+    background:
+        linear-gradient(
+            145deg,
+            #3b3320,
+            #2f2a1d
+        );
+    border-color: #6f6037;
+}
+
+html.dark-mode .award-card h3 {
+    color: #f6d982;
+}
+
+html.dark-mode .award-card p,
+html.dark-mode .award-card time {
+    color: #e7d9a8;
+}
+
+/* 입력창이나 흰색 박스 안 글자 */
+html.dark-mode input,
+html.dark-mode select,
+html.dark-mode textarea {
+    color: #e4eaf2;
+    background: #162235;
+    border-color: #40556f;
+}
+
+html.dark-mode input::placeholder,
+html.dark-mode textarea::placeholder {
+    color: #8799ae;
+}
+
+/* 목록 번호와 일반 텍스트 */
+html.dark-mode ol,
+html.dark-mode ul,
+html.dark-mode li,
+html.dark-mode dd {
+    color: #d8e1ec;
+}
