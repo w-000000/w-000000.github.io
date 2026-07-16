@@ -35,11 +35,14 @@ function setLoading(isLoading) {
 }
 
 /*
-이미 로그인된 사용자가 로그인 페이지에 들어오면
+현재 탭에서 정상적으로 로그인한 사용자만
 메인 페이지로 이동합니다.
 */
 onAuthStateChanged(auth, (user) => {
-    if (user) {
+    const sessionLogin =
+        sessionStorage.getItem("sessionLogin");
+
+    if (user && sessionLogin === "true") {
         window.location.replace("index.html");
     }
 });
@@ -92,11 +95,8 @@ loginForm.addEventListener(
 
         try {
             /*
-            로그인 상태를 현재 브라우저 세션에서만 유지합니다.
-
-            새로고침: 로그인 유지
-            페이지 이동: 로그인 유지
-            브라우저 종료: 로그인 해제
+            Firebase 로그인 상태를
+            현재 브라우저 세션에서만 유지합니다.
             */
             await setPersistence(
                 auth,
@@ -109,6 +109,17 @@ loginForm.addEventListener(
                     email,
                     password
                 );
+
+            /*
+            현재 탭에서 로그인했다는 표시입니다.
+
+            같은 탭 이동 및 새로고침에서는 유지되고,
+            탭이나 창을 닫으면 삭제됩니다.
+            */
+            sessionStorage.setItem(
+                "sessionLogin",
+                "true"
+            );
 
             console.log(
                 "로그인한 사용자:",
@@ -128,6 +139,10 @@ loginForm.addEventListener(
             console.error(
                 "로그인 오류:",
                 error
+            );
+
+            sessionStorage.removeItem(
+                "sessionLogin"
             );
 
             switch (error.code) {
@@ -168,7 +183,9 @@ loginForm.addEventListener(
 
                 default:
                     showMessage(
-                        `로그인 중 오류가 발생했습니다: ${error.message}`,
+                        `로그인 중 오류가 발생했습니다: ${
+                            error.message
+                        }`,
                         true
                     );
             }
