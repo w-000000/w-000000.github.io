@@ -2,7 +2,11 @@
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
     <meta
         name="description"
@@ -24,12 +28,13 @@
     </header>
 
     <main>
-        <form action="signUpResult.html" method="get">
+        <form id="signupForm">
             <fieldset>
                 <legend>계정 정보</legend>
 
                 <div class="form-group">
                     <label for="userId">아이디</label>
+
                     <input
                         type="text"
                         id="userId"
@@ -41,28 +46,35 @@
 
                 <div class="form-group">
                     <label for="password">비밀번호</label>
+
                     <input
                         type="password"
                         id="password"
                         name="password"
-                        placeholder="비밀번호를 입력하세요"
+                        placeholder="6자 이상 입력하세요"
+                        minlength="6"
                         required
                     >
                 </div>
 
                 <div class="form-group">
-                    <label for="passwordCheck">비밀번호 확인</label>
+                    <label for="passwordCheck">
+                        비밀번호 확인
+                    </label>
+
                     <input
                         type="password"
                         id="passwordCheck"
                         name="passwordCheck"
                         placeholder="비밀번호를 다시 입력하세요"
+                        minlength="6"
                         required
                     >
                 </div>
 
                 <div class="form-group">
                     <label for="email">이메일</label>
+
                     <input
                         type="email"
                         id="email"
@@ -78,6 +90,7 @@
 
                 <div class="form-group">
                     <label for="name">이름</label>
+
                     <input
                         type="text"
                         id="name"
@@ -89,6 +102,7 @@
 
                 <div class="form-group">
                     <label for="birth">생년월일</label>
+
                     <input
                         type="date"
                         id="birth"
@@ -98,6 +112,7 @@
 
                 <div class="form-group">
                     <label for="phone">전화번호</label>
+
                     <input
                         type="tel"
                         id="phone"
@@ -108,14 +123,35 @@
 
                 <div class="form-group">
                     <label for="region">거주 지역</label>
+
                     <select id="region" name="region">
-                        <option value="">지역을 선택하세요</option>
-                        <option value="seoul">서울특별시</option>
-                        <option value="busan">부산광역시</option>
-                        <option value="gwangju">광주광역시</option>
-                        <option value="daejeon">대전광역시</option>
-                        <option value="jeonju">전주시</option>
-                        <option value="other">기타</option>
+                        <option value="">
+                            지역을 선택하세요
+                        </option>
+
+                        <option value="seoul">
+                            서울특별시
+                        </option>
+
+                        <option value="busan">
+                            부산광역시
+                        </option>
+
+                        <option value="gwangju">
+                            광주광역시
+                        </option>
+
+                        <option value="daejeon">
+                            대전광역시
+                        </option>
+
+                        <option value="jeonju">
+                            전주시
+                        </option>
+
+                        <option value="other">
+                            기타
+                        </option>
                     </select>
                 </div>
             </fieldset>
@@ -125,7 +161,9 @@
 
                 <div class="form-group">
                     <p>
-                        <strong>관심 있는 분야를 선택하세요.</strong>
+                        <strong>
+                            관심 있는 분야를 선택하세요.
+                        </strong>
                     </p>
 
                     <div class="inline-group">
@@ -259,7 +297,9 @@
 
                 <div class="form-group">
                     <p>
-                        <strong>개발 경험이 있나요?</strong>
+                        <strong>
+                            개발 경험이 있나요?
+                        </strong>
                     </p>
 
                     <div class="inline-group">
@@ -285,7 +325,9 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="experienceLevel">개발 경험 수준</label>
+                    <label for="experienceLevel">
+                        개발 경험 수준
+                    </label>
 
                     <select
                         id="experienceLevel"
@@ -361,7 +403,10 @@
                 <legend>프로필 및 활동 링크</legend>
 
                 <div class="form-group">
-                    <label for="github">GitHub 주소</label>
+                    <label for="github">
+                        GitHub 주소
+                    </label>
+
                     <input
                         type="url"
                         id="github"
@@ -371,7 +416,10 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="notion">Notion 주소</label>
+                    <label for="notion">
+                        Notion 주소
+                    </label>
+
                     <input
                         type="url"
                         id="notion"
@@ -381,7 +429,10 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="blog">기술 블로그 주소</label>
+                    <label for="blog">
+                        기술 블로그 주소
+                    </label>
+
                     <input
                         type="url"
                         id="blog"
@@ -391,7 +442,10 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="portfolio">포트폴리오 주소</label>
+                    <label for="portfolio">
+                        포트폴리오 주소
+                    </label>
+
                     <input
                         type="url"
                         id="portfolio"
@@ -401,7 +455,10 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="linkedin">LinkedIn 주소</label>
+                    <label for="linkedin">
+                        LinkedIn 주소
+                    </label>
+
                     <input
                         type="url"
                         id="linkedin"
@@ -411,7 +468,10 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="project">대표 프로젝트 주소</label>
+                    <label for="project">
+                        대표 프로젝트 주소
+                    </label>
+
                     <input
                         type="url"
                         id="project"
@@ -425,7 +485,9 @@
                 <legend>추가 정보</legend>
 
                 <div class="form-group">
-                    <label for="joinPath">가입 경로</label>
+                    <label for="joinPath">
+                        가입 경로
+                    </label>
 
                     <select
                         id="joinPath"
@@ -458,7 +520,9 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="goal">학습 목표</label>
+                    <label for="goal">
+                        학습 목표
+                    </label>
 
                     <select
                         id="goal"
@@ -491,7 +555,9 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="introduction">자기소개</label>
+                    <label for="introduction">
+                        자기소개
+                    </label>
 
                     <textarea
                         id="introduction"
@@ -517,6 +583,7 @@
                         <label>
                             <input
                                 type="checkbox"
+                                id="agreement"
                                 name="agreement"
                                 value="agree"
                                 required
@@ -531,6 +598,7 @@
                         <label>
                             <input
                                 type="checkbox"
+                                id="emailAgreement"
                                 name="emailAgreement"
                                 value="agree"
                             >
@@ -540,8 +608,17 @@
                 </div>
             </fieldset>
 
+            <p
+                id="signupMessage"
+                role="status"
+                aria-live="polite"
+            ></p>
+
             <div class="button-group">
-                <button type="submit">
+                <button
+                    type="submit"
+                    id="signupButton"
+                >
                     회원가입
                 </button>
 
@@ -565,5 +642,10 @@
             </small>
         </p>
     </footer>
+
+    <script
+        type="module"
+        src="js/signup.js"
+    ></script>
 </body>
 </html>
