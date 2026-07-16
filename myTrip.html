@@ -24,103 +24,149 @@
     </header>
 
     <main>
-        <section>
-            <h2>🎵 여행할 때 듣는 음악</h2>
+        <div class="container">
+            <section>
+                <h2>🎵 여행할 때 듣는 음악</h2>
 
-            <div class="audio-card">
-                <audio controls autoplay loop>
-                    <source
-                        src="media/music.mp3"
-                        type="audio/mpeg"
-                    >
+                <div class="audio-card">
+                    <audio controls autoplay loop>
+                        <source
+                            src="media/music.mp3"
+                            type="audio/mpeg"
+                        >
 
-                    현재 브라우저에서는 오디오를 재생할 수 없습니다.
-                </audio>
+                        현재 브라우저에서는 오디오를 재생할 수 없습니다.
+                    </audio>
 
-                <p class="media-note">
-                    브라우저 설정에 따라 자동재생이 차단될 수 있습니다.
-                    이 경우 재생 버튼을 눌러주세요.
-                </p>
-            </div>
-        </section>
+                    <p class="media-note">
+                        브라우저 설정에 따라 자동재생이 차단될 수 있습니다.
+                        이 경우 재생 버튼을 눌러주세요.
+                    </p>
+                </div>
+            </section>
 
-        <section>
-            <h2>📸 기억에 남는 여행지</h2>
+            <section>
+                <h2>📸 기억에 남는 여행지</h2>
 
-            <div class="trip-gallery">
-                <figure>
-                    <img
-                        src="media/australia.jpg"
-                        alt="호주의 여행 풍경"
-                        loading="lazy"
-                    >
+                <div class="trip-gallery">
+                    <figure>
+                        <img
+                            src="media/australia.jpg"
+                            alt="호주의 여행 풍경"
+                            loading="lazy"
+                        >
 
-                    <figcaption>
-                        <strong>호주</strong>
-                        <span>넓은 자연과 여유로운 분위기</span>
-                    </figcaption>
-                </figure>
+                        <figcaption>
+                            <strong>호주</strong>
 
-                <figure>
-                    <img
-                        src="media/croatia.jpeg"
-                        alt="크로아티아의 여행 풍경"
-                        loading="lazy"
-                    >
+                            <p class="trip-card">
+                                넓은 자연과 여유로운 분위기가 인상적이었던 여행지입니다.
+                            </p>
+                        </figcaption>
+                    </figure>
 
-                    <figcaption>
-                        <strong>크로아티아</strong>
-                        <span>아름다운 바다와 유럽의 거리</span>
-                    </figcaption>
-                </figure>
+                    <figure>
+                        <img
+                            src="media/croatia.jpeg"
+                            alt="크로아티아의 여행 풍경"
+                            loading="lazy"
+                        >
 
-                <figure>
-                    <img
-                        src="media/malaysia.jpg"
-                        alt="말레이시아의 여행 풍경"
-                        loading="lazy"
-                    >
+                        <figcaption>
+                            <strong>크로아티아</strong>
 
-                    <figcaption>
-                        <strong>말레이시아</strong>
-                        <span>다양한 문화와 활기찬 도시</span>
-                    </figcaption>
-                </figure>
+                            <p class="trip-card">
+                                아름다운 바다와 유럽의 거리를 감상할 수 있었습니다.
+                            </p>
+                        </figcaption>
+                    </figure>
 
-                <figure>
-                    <img
-                        src="media/vietnam.jpeg"
-                        alt="베트남의 여행 풍경"
-                        loading="lazy"
-                    >
+                    <figure>
+                        <img
+                            src="media/malaysia.jpg"
+                            alt="말레이시아의 여행 풍경"
+                            loading="lazy"
+                        >
 
-                    <figcaption>
-                        <strong>베트남</strong>
-                        <span>맛있는 음식과 매력적인 거리</span>
-                    </figcaption>
-                </figure>
-            </div>
-        </section>
+                        <figcaption>
+                            <strong>말레이시아</strong>
 
-        <section>
-            <h2>🎬 크로아티아 여행 영상</h2>
+                            <p class="trip-card">
+                                다양한 문화와 활기찬 도시 분위기를 경험했습니다.
+                            </p>
+                        </figcaption>
+                    </figure>
 
-            <div class="video-card">
-                <video controls preload="metadata">
-                    <source
-                        src="media/croatia_travel.mp4"
-                        type="video/mp4"
-                    >
+                    <figure>
+                        <img
+                            src="media/vietnam.jpeg"
+                            alt="베트남의 여행 풍경"
+                            loading="lazy"
+                        >
 
-                    현재 브라우저에서는 영상을 재생할 수 없습니다.
-                </video>
+                        <figcaption>
+                            <strong>베트남</strong>
 
-                <p>
-                    크로아티아 여행 중 촬영한 풍경과 추억을
-                    영상으로 기록했습니다.
-                </p>
-            </div>
-        </section>
+                            <p class="trip-card">
+                                맛있는 음식과 매력적인 거리 풍경이 기억에 남았습니다.
+                            </p>
+                        </figcaption>
+                    </figure>
+
+                    <figure>
+                        <img
+                            src="media/japan.jpg"
+                            alt="일본의 여행 풍경"
+                            loading="lazy"
+                        >
+
+                        <figcaption>
+                            <strong>일본</strong>
+
+                            <p class="trip-card">
+                                전통적인 분위기와 현대적인 도시 풍경이 함께 인상적이었습니다.
+                            </p>
+                        </figcaption>
+                    </figure>
+
+                    <figure>
+                        <img
+                            src="media/belgium.jpg"
+                            alt="벨기에의 여행 풍경"
+                            loading="lazy"
+                        >
+
+                        <figcaption>
+                            <strong>벨기에</strong>
+
+                            <p class="trip-card">
+                                고풍스러운 건축물과 아름다운 거리 풍경을 감상했습니다.
+                            </p>
+                        </figcaption>
+                    </figure>
+                </div>
+            </section>
+
+            <section>
+                <h2>🎬 크로아티아 여행 영상</h2>
+
+                <div class="video-card">
+                    <video controls preload="metadata">
+                        <source
+                            src="media/croatia_travel.mp4"
+                            type="video/mp4"
+                        >
+
+                        현재 브라우저에서는 영상을 재생할 수 없습니다.
+                    </video>
+
+                    <p>
+                        크로아티아 여행 중 촬영한 풍경과 추억을
+                        영상으로 기록했습니다.
+                    </p>
+                </div>
+            </section>
+        </div>
     </main>
 
     <footer>
