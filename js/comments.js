@@ -13,7 +13,10 @@ import {
     query,
     orderBy,
     onSnapshot,
-    serverTimestamp
+    serverTimestamp,
+    doc,
+    updateDoc,
+    deleteDoc
 } from "https://www.gstatic.com/firebasejs/12.7.0/firebase-firestore.js";
 
 const commentForm =
@@ -41,6 +44,7 @@ const loginGuide =
     document.querySelector("#loginGuide");
 
 let currentUser = null;
+let savedComments = [];
 
 function showMessage(message, isError = false) {
     commentMessage.textContent = message;
@@ -85,7 +89,208 @@ function formatDate(timestamp) {
     ).format(date);
 }
 
-function createCommentElement(comment) {
+function createActionButton(
+    text,
+    className,
+    clickHandler
+) {
+    const button =
+        document.createElement("button");
+
+    button.type = "button";
+    button.textContent = text;
+    button.className = className;
+
+    button.addEventListener(
+        "click",
+        clickHandler
+    );
+
+    return button;
+}
+
+function startEditComment(
+    article,
+    commentId,
+    comment
+) {
+    const contentElement =
+        article.querySelector(
+            ".comment-content"
+        );
+
+    const actionArea =
+        article.querySelector(
+            ".comment-actions"
+        );
+
+    contentElement.hidden = true;
+    actionArea.hidden = true;
+
+    const editArea =
+        document.createElement("div");
+
+    editArea.className =
+        "comment-edit-area";
+
+    const textarea =
+        document.createElement("textarea");
+
+    textarea.className =
+        "comment-edit-input";
+
+    textarea.maxLength = 300;
+    textarea.value =
+        comment.content ?? "";
+
+    const editCount =
+        document.createElement("span");
+
+    editCount.className =
+        "comment-edit-count";
+
+    editCount.textContent =
+        `${textarea.value.length} / 300`;
+
+    textarea.addEventListener(
+        "input",
+        () => {
+            editCount.textContent =
+                `${textarea.value.length} / 300`;
+        }
+    );
+
+    const buttonArea =
+        document.createElement("div");
+
+    buttonArea.className =
+        "comment-edit-buttons";
+
+    const saveButton =
+        createActionButton(
+            "저장",
+            "comment-save-button",
+            async () => {
+                const newContent =
+                    textarea.value.trim();
+
+                if (!newContent) {
+                    alert(
+                        "댓글 내용을 입력해 주세요."
+                    );
+
+                    textarea.focus();
+                    return;
+                }
+
+                if (newContent.length > 300) {
+                    alert(
+                        "댓글은 300자 이하로 입력해 주세요."
+                    );
+
+                    return;
+                }
+
+                try {
+                    saveButton.disabled = true;
+                    saveButton.textContent =
+                        "저장 중...";
+
+                    await updateDoc(
+                        doc(
+                            db,
+                            "comments",
+                            commentId
+                        ),
+                        {
+                            content:
+                                newContent,
+
+                            updatedAt:
+                                serverTimestamp()
+                        }
+                    );
+                } catch (error) {
+                    console.error(
+                        "댓글 수정 오류:",
+                        error
+                    );
+
+                    alert(
+                        "댓글 수정 중 오류가 발생했습니다."
+                    );
+
+                    saveButton.disabled = false;
+                    saveButton.textContent =
+                        "저장";
+                }
+            }
+        );
+
+    const cancelButton =
+        createActionButton(
+            "취소",
+            "comment-cancel-button",
+            () => {
+                editArea.remove();
+
+                contentElement.hidden =
+                    false;
+
+                actionArea.hidden =
+                    false;
+            }
+        );
+
+    buttonArea.append(
+        saveButton,
+        cancelButton
+    );
+
+    editArea.append(
+        textarea,
+        editCount,
+        buttonArea
+    );
+
+    article.appendChild(editArea);
+
+    textarea.focus();
+}
+
+async function removeComment(commentId) {
+    const confirmed = confirm(
+        "이 댓글을 삭제하시겠습니까?"
+    );
+
+    if (!confirmed) {
+        return;
+    }
+
+    try {
+        await deleteDoc(
+            doc(
+                db,
+                "comments",
+                commentId
+            )
+        );
+    } catch (error) {
+        console.error(
+            "댓글 삭제 오류:",
+            error
+        );
+
+        alert(
+            "댓글 삭제 중 오류가 발생했습니다."
+        );
+    }
+}
+
+function createCommentElement(
+    commentId,
+    comment
+) {
     const article =
         document.createElement("article");
 
@@ -94,13 +299,22 @@ function createCommentElement(comment) {
     const header =
         document.createElement("div");
 
-    header.className = "comment-card-header";
+    header.className =
+        "comment-card-header";
 
     const author =
         document.createElement("strong");
 
     author.textContent =
-        `👤 ${comment.authorName ?? "사용자"}`;
+        `👤 ${
+            comment.authorName ?? "사용자"
+        }`;
+
+    const dateArea =
+        document.createElement("div");
+
+    dateArea.className =
+        "comment-date-area";
 
     const date =
         document.createElement("time");
@@ -108,16 +322,124 @@ function createCommentElement(comment) {
     date.textContent =
         formatDate(comment.createdAt);
 
+    dateArea.appendChild(date);
+
+    if (comment.updatedAt) {
+        const edited =
+            document.createElement("span");
+
+        edited.className =
+            "comment-edited";
+
+        edited.textContent = "수정됨";
+
+        dateArea.appendChild(edited);
+    }
+
+    header.append(
+        author,
+        dateArea
+    );
+
     const content =
         document.createElement("p");
+
+    content.className =
+        "comment-content";
 
     content.textContent =
         comment.content ?? "";
 
-    header.append(author, date);
-    article.append(header, content);
+    article.append(
+        header,
+        content
+    );
+
+    const isOwner =
+        currentUser &&
+        currentUser.uid ===
+            comment.authorId;
+
+    if (isOwner) {
+        const actionArea =
+            document.createElement("div");
+
+        actionArea.className =
+            "comment-actions";
+
+        const editButton =
+            createActionButton(
+                "수정",
+                "comment-edit-button",
+                () => {
+                    startEditComment(
+                        article,
+                        commentId,
+                        comment
+                    );
+                }
+            );
+
+        const deleteButton =
+            createActionButton(
+                "삭제",
+                "comment-delete-button",
+                () => {
+                    removeComment(
+                        commentId
+                    );
+                }
+            );
+
+        actionArea.append(
+            editButton,
+            deleteButton
+        );
+
+        article.appendChild(
+            actionArea
+        );
+    }
 
     return article;
+}
+
+function renderComments() {
+    commentList.innerHTML = "";
+
+    commentCount.textContent =
+        `${savedComments.length}개`;
+
+    if (savedComments.length === 0) {
+        const emptyMessage =
+            document.createElement("p");
+
+        emptyMessage.className =
+            "comment-empty";
+
+        emptyMessage.textContent =
+            "아직 등록된 댓글이 없습니다.";
+
+        commentList.appendChild(
+            emptyMessage
+        );
+
+        return;
+    }
+
+    savedComments.forEach(
+        ({ id, data }) => {
+            const commentElement =
+                createCommentElement(
+                    id,
+                    data
+                );
+
+            commentList.appendChild(
+                commentElement
+            );
+        }
+    );
 }
 
 /*
@@ -129,20 +451,30 @@ onAuthStateChanged(auth, (user) => {
     if (user) {
         loginGuide.hidden = true;
         commentForm.hidden = false;
-        return;
+    } else {
+        loginGuide.hidden = false;
+        commentForm.hidden = true;
     }
 
-    loginGuide.hidden = false;
-    commentForm.hidden = true;
+    /*
+    로그인 상태가 바뀌면
+    수정·삭제 버튼 표시도 다시 처리합니다.
+    */
+    renderComments();
 });
 
 /*
-글자 수 표시
+댓글 입력 글자 수
 */
-commentContent.addEventListener("input", () => {
-    characterCount.textContent =
-        `${commentContent.value.length} / 300`;
-});
+commentContent.addEventListener(
+    "input",
+    () => {
+        characterCount.textContent =
+            `${
+                commentContent.value.length
+            } / 300`;
+    }
+);
 
 /*
 댓글 등록
@@ -197,10 +529,14 @@ commentForm.addEventListener(
                         currentUser.uid,
 
                     authorName:
-                        getAuthorName(currentUser),
+                        getAuthorName(
+                            currentUser
+                        ),
 
                     createdAt:
-                        serverTimestamp()
+                        serverTimestamp(),
+
+                    updatedAt: null
                 }
             );
 
@@ -218,7 +554,10 @@ commentForm.addEventListener(
                 error
             );
 
-            if (error.code === "permission-denied") {
+            if (
+                error.code ===
+                "permission-denied"
+            ) {
                 showMessage(
                     "로그인한 사용자만 댓글을 작성할 수 있습니다.",
                     true
@@ -248,39 +587,20 @@ const commentsQuery = query(
 onSnapshot(
     commentsQuery,
     (snapshot) => {
-        commentList.innerHTML = "";
+        savedComments =
+            snapshot.docs.map(
+                (documentSnapshot) => {
+                    return {
+                        id:
+                            documentSnapshot.id,
 
-        commentCount.textContent =
-            `${snapshot.size}개`;
-
-        if (snapshot.empty) {
-            const emptyMessage =
-                document.createElement("p");
-
-            emptyMessage.className =
-                "comment-empty";
-
-            emptyMessage.textContent =
-                "아직 등록된 댓글이 없습니다.";
-
-            commentList.appendChild(
-                emptyMessage
+                        data:
+                            documentSnapshot.data()
+                    };
+                }
             );
 
-            return;
-        }
-
-        snapshot.forEach((documentSnapshot) => {
-            const comment =
-                documentSnapshot.data();
-
-            const commentElement =
-                createCommentElement(comment);
-
-            commentList.appendChild(
-                commentElement
-            );
-        });
+        renderComments();
     },
     (error) => {
         console.error(
