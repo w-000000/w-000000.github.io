@@ -56,8 +56,7 @@ signupForm.addEventListener("submit", async (event) => {
 
     signupMessage.textContent = "";
 
-    const userId = getInputValue("#userId");
-    const email = getInputValue("#email");
+    const email = getInputValue("#userId");
     const password =
         document.querySelector("#password").value;
     const passwordCheck =
@@ -126,8 +125,7 @@ signupForm.addEventListener("submit", async (event) => {
             uid: createdUser.uid,
 
             account: {
-                userId: userId,
-                email: email
+                userId: email
             },
 
             personal: {

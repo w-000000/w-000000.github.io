@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="SKALA-FRONT 로그인 페이지"
+    >
+
+    <title>로그인</title>
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body class="site-page login-page">
+    <header>
+        <h1>🔐 로그인</h1>
+
+        <p>
+            가입한 이메일과 비밀번호를 입력해 주세요.
+        </p>
+    </header>
+
+    <main>
+        <form id="loginForm">
+            <fieldset>
+                <legend>로그인 정보</legend>
+
+                <div class="form-group">
+                    <label for="loginEmail">이메일</label>
+
+                    <input
+                        type="email"
+                        id="loginEmail"
+                        name="loginEmail"
+                        placeholder="example@email.com"
+                        required
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="loginPassword">비밀번호</label>
+
+                    <input
+                        type="password"
+                        id="loginPassword"
+                        name="loginPassword"
+                        placeholder="비밀번호를 입력하세요"
+                        required
+                    >
+                </div>
+            </fieldset>
+
+            <p
+                id="loginMessage"
+                role="status"
+                aria-live="polite"
+            ></p>
+
+            <div class="button-group">
+                <button
+                    type="submit"
+                    id="loginButton"
+                >
+                    로그인
+                </button>
+
+                <a href="signUp.html">
+                    회원가입
+                </a>
+            </div>
+        </form>
+    </main>
+
+    <footer>
+        <p>
+            <a href="index.html">
+                홈으로 돌아가기
+            </a>
+        </p>
+
+        <p>
+            <small>
+                SKALA-FRONT 로그인 페이지
+            </small>
+        </p>
+    </footer>
+
+    <script
+        type="module"
+        src="js/login.js"
+    ></script>
+</body>
+</html>
