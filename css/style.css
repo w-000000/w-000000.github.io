@@ -130,10 +130,10 @@ figcaption {
 .site-page > header p {
     position: relative;
     z-index: 1;
-    max-width: 700px;
+    max-width: 1000px;
     margin: 0 auto;
     color: rgba(255,255,255,.92);
-    font-size: 19px;
+    font-size: 21px;
 }
 
 .site-page > main {
