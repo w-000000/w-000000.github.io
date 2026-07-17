@@ -1202,6 +1202,144 @@ html.dark-mode {
     letter-spacing: 0.1em;
 }
 
+/* JavaScript 과제: Up-Down 숫자 맞추기 */
+.mission-home .mission-sidebar .updown-card {
+    --spot-x: 50%;
+    --spot-y: 50%;
+    position: relative;
+    overflow: hidden;
+    color: white;
+    background:
+        radial-gradient(
+            circle at var(--spot-x) var(--spot-y),
+            rgba(119, 124, 255, 0.24),
+            transparent 35%
+        ),
+        var(--mission-ink);
+    border-color: rgba(255, 255, 255, 0.1);
+    isolation: isolate;
+}
+
+.mission-home .updown-card::after {
+    position: absolute;
+    right: -54px;
+    bottom: -74px;
+    z-index: -1;
+    width: 170px;
+    height: 170px;
+    content: "";
+    border: 1px solid rgba(200, 255, 101, 0.16);
+    border-radius: 50%;
+}
+
+.updown-card-heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+}
+
+.mission-home .updown-card-heading > span {
+    padding: 6px 9px;
+    color: var(--mission-lime);
+    font-size: 9px;
+    font-weight: 950;
+    letter-spacing: 0.12em;
+    border: 1px solid rgba(200, 255, 101, 0.28);
+    border-radius: 999px;
+}
+
+.mission-home .mission-sidebar .updown-card h2 {
+    margin: 24px 0 13px;
+    color: white;
+    font-size: clamp(34px, 3.4vw, 45px);
+    line-height: 0.92;
+    letter-spacing: -0.075em;
+}
+
+.mission-home .updown-card h2 > span {
+    color: var(--mission-lime);
+}
+
+.mission-home .mission-sidebar .updown-description {
+    color: rgba(255, 255, 255, 0.56);
+    line-height: 1.65;
+}
+
+.updown-range {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr) auto;
+    align-items: center;
+    gap: 10px;
+    margin: 24px 0 18px;
+    color: rgba(255, 255, 255, 0.48);
+    font-size: 9px;
+    font-weight: 900;
+    letter-spacing: 0.08em;
+}
+
+.updown-range i {
+    position: relative;
+    height: 1px;
+    overflow: hidden;
+    background: rgba(255, 255, 255, 0.16);
+}
+
+.updown-range i::after {
+    position: absolute;
+    top: -2px;
+    left: 0;
+    width: 28%;
+    height: 5px;
+    content: "";
+    background: var(--mission-lime);
+    box-shadow: 0 0 13px rgba(200, 255, 101, 0.55);
+    animation: updownScan 2.4s ease-in-out infinite alternate;
+}
+
+@keyframes updownScan {
+    to {
+        left: 72%;
+    }
+}
+
+.mission-home .updown-start-button {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    margin: 0;
+    padding: 13px 16px;
+    color: var(--mission-ink);
+    font-size: 12px;
+    font-weight: 950;
+    background: var(--mission-lime);
+    border: 0;
+    border-radius: 12px;
+    box-shadow: none;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.mission-home .updown-start-button:hover {
+    color: var(--mission-ink);
+    background: var(--mission-lime);
+    transform: translateY(-3px);
+    box-shadow: 0 12px 24px rgba(200, 255, 101, 0.16);
+}
+
+.mission-home .updown-start-button:focus-visible {
+    outline: 3px solid white;
+    outline-offset: 3px;
+}
+
+.mission-home .mission-sidebar .updown-status {
+    margin-top: 12px;
+    color: rgba(255, 255, 255, 0.38);
+    font-size: 8px;
+    font-weight: 900;
+    letter-spacing: 0.13em;
+}
+
 .mission-links {
     display: grid;
     gap: 0;
@@ -1631,6 +1769,17 @@ html.dark-mode .mission-home .mission-sidebar section {
     border-color: var(--mission-line);
 }
 
+html.dark-mode .mission-home .mission-sidebar section.updown-card {
+    background:
+        radial-gradient(
+            circle at var(--spot-x) var(--spot-y),
+            rgba(119, 124, 255, 0.24),
+            transparent 35%
+        ),
+        var(--mission-ink);
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
 html.dark-mode .mission-home .live-card,
 html.dark-mode .mission-home .mission-project,
 html.dark-mode .showcase-portfolio .featured-project,
@@ -2002,6 +2151,10 @@ html.dark-mode .showcase-portfolio .award-card:first-child time {
     .system-flow i::after,
     .mission-scroll-cue i::after,
     .agent-map::after {
+        animation: none;
+    }
+
+    .updown-range i::after {
         animation: none;
     }
 }
