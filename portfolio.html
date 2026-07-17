@@ -12,29 +12,61 @@
     <title>임창우의 포트폴리오</title>
 
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/showcase.css">
 </head>
 
-<body class="site-page portfolio-page">
-    <header>
-        <h1>💼 임창우의 포트폴리오</h1>
+<body class="site-page portfolio-page showcase-portfolio">
+    <a class="skip-link" href="#portfolioContent">
+        본문으로 바로가기
+    </a>
 
-        <p>
-            AI와 소프트웨어 기술을 활용해 진행한 프로젝트와
-            연구 경험을 소개합니다.
-        </p>
+    <div
+        class="scroll-progress"
+        id="scrollProgress"
+        aria-hidden="true"
+    ></div>
+
+    <header class="portfolio-hero">
+        <div class="portfolio-hero-inner" data-reveal>
+            <p class="portfolio-kicker">
+                Selected Works · 2021—2026
+            </p>
+
+            <h1>
+                문제를 발견하고,<br>
+                <span>AI로 해답을 설계합니다.</span>
+            </h1>
+
+            <p class="portfolio-lead">
+                음성·영상 분석부터 Physical AI와 소프트웨어 품질 연구까지,
+                기술을 실제 문제 해결로 연결한 프로젝트를 소개합니다.
+            </p>
+
+            <div class="portfolio-stats" aria-label="포트폴리오 요약">
+                <span>06 Projects</span>
+                <span>02 Awards</span>
+                <span>AI · Software · Data</span>
+            </div>
+        </div>
     </header>
 
     <nav
         class="portfolio-nav"
         aria-label="포트폴리오 이동 메뉴"
     >
-        <a href="#about">소개</a>
-        <a href="#projects">프로젝트</a>
-        <a href="#skills">기술 스택</a>
-        <a href="#awards">수상 및 자격</a>
+        <a class="portfolio-home" href="index.html">
+            CHANGWOO.
+        </a>
+
+        <div class="portfolio-nav-links">
+            <a href="#about">소개</a>
+            <a href="#projects">프로젝트</a>
+            <a href="#skills">기술 스택</a>
+            <a href="#awards">수상 및 자격</a>
+        </div>
     </nav>
 
-    <main>
+    <main id="portfolioContent">
         <section id="about">
             <h2>🙋 자기소개</h2>
 
@@ -499,5 +531,6 @@
         type="module"
         src="js/theme.js"
     ></script>
+    <script src="js/showcase.js" defer></script>
 </body>
 </html>

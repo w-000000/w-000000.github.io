@@ -12,10 +12,27 @@
     <title>나의 소개</title>
 
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/showcase.css">
 </head>
 
-<body class="site-page profile-page">
+<body class="site-page profile-page showcase-inner">
+    <a class="skip-link" href="#pageContent">본문으로 바로가기</a>
+    <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
+
+    <nav class="inner-page-nav" aria-label="전체 페이지 메뉴">
+        <a class="inner-page-brand" href="index.html">CW<span>/26</span></a>
+        <div class="inner-page-links">
+            <a href="myProfile.html" aria-current="page">소개</a>
+            <a href="portfolio.html">포트폴리오</a>
+            <a href="myClass.html">강의</a>
+            <a href="myHoliday.html">일상</a>
+            <a href="myTrip.html">여행</a>
+            <a href="comments.html">댓글</a>
+        </div>
+    </nav>
+
     <header>
+        <p class="inner-kicker">ABOUT · IDENTITY</p>
         <h1>👋 안녕하세요! 임창우입니다</h1>
 
         <p>
@@ -24,7 +41,7 @@
         </p>
     </header>
 
-    <main>
+    <main id="pageContent">
         <section class="profile-summary">
             <h2>🙋 나의 기본 정보</h2>
 
@@ -233,5 +250,6 @@
     type="module"
     src="js/theme.js"
     ></script>
+    <script src="js/showcase.js" defer></script>
 </body>
 </html>

@@ -12,10 +12,27 @@
     <title>나의 강의 일정</title>
 
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/showcase.css">
 </head>
 
-<body class="site-page class-page">
+<body class="site-page class-page showcase-inner">
+    <a class="skip-link" href="#pageContent">본문으로 바로가기</a>
+    <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
+
+    <nav class="inner-page-nav" aria-label="전체 페이지 메뉴">
+        <a class="inner-page-brand" href="index.html">CW<span>/26</span></a>
+        <div class="inner-page-links">
+            <a href="myProfile.html">소개</a>
+            <a href="portfolio.html">포트폴리오</a>
+            <a href="myClass.html" aria-current="page">강의</a>
+            <a href="myHoliday.html">일상</a>
+            <a href="myTrip.html">여행</a>
+            <a href="comments.html">댓글</a>
+        </div>
+    </nav>
+
     <header>
+        <p class="inner-kicker">LEARNING · WEEKLY SYSTEM</p>
         <h1>🗓️ 나의 강의 시간표</h1>
 
         <p>
@@ -23,7 +40,7 @@
         </p>
     </header>
 
-    <main>
+    <main id="pageContent">
         <section>
             <h2>📚 주간 강의 일정</h2>
 
@@ -191,5 +208,6 @@
     type="module"
     src="js/theme.js"
     ></script>
+    <script src="js/showcase.js" defer></script>
 </body>
 </html>

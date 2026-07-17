@@ -9,239 +9,363 @@
 
     <meta
         name="description"
-        content="임창우의 프로필, 강의 일정, 휴일 일과, 여행 기록과 포트폴리오를 모은 개인 포털"
+        content="AI와 소프트웨어 기술로 현실의 문제를 해결하는 개발자 임창우의 개인 포털"
     >
 
-    <title>임창우의 포털 Hub</title>
+    <title>임창우 | AI Developer Portal</title>
 
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/showcase.css">
 </head>
 
-<body class="site-page home-page">
-    <header>
+<body class="site-page home-page mission-home">
+    <a class="skip-link" href="#mainContent">
+        본문으로 바로가기
+    </a>
 
+    <div
+        class="scroll-progress"
+        id="scrollProgress"
+        aria-hidden="true"
+    ></div>
+
+    <header class="mission-hero" id="top">
         <button
-        type="button"
-        id="themeToggleButton"
-        class="theme-toggle-button"
-        aria-label="다크 모드 전환"
+            type="button"
+            id="themeToggleButton"
+            class="theme-toggle-button"
+            aria-label="다크 모드 전환"
         >
-        🌙 다크 모드
+            🌙 다크 모드
         </button>
 
-        <h1>🚀 임창우의 포털 Hub</h1>
+        <div class="mission-hero-grid">
+            <div class="mission-hero-copy" data-reveal>
+                <p class="mission-kicker">
+                    <span class="status-dot" aria-hidden="true"></span>
+                    AI Developer · SKALA 2026
+                </p>
 
-        <p>
-            임창우의 프로필, 강의 일정, 휴일 일과, 여행 기록과 포트폴리오를
-            한곳에서 확인할 수 있는 개인 포털입니다.
-        </p>
+                <h1>
+                    AI로 현실의<br>
+                    <span>문제를 해결하는</span><br>
+                    개발자.
+                </h1>
+
+                <p class="mission-hero-description">
+                    데이터를 이해하고, 시스템을 설계하고,
+                    실제 환경에서 동작하는 AI 서비스를 만듭니다.
+                    연구 결과를 사용자의 경험으로 연결하는 개발자 임창우입니다.
+                </p>
+
+                <div class="mission-actions">
+                    <a class="mission-button mission-button-primary" href="portfolio.html">
+                        프로젝트 탐험하기
+                        <span aria-hidden="true">↗</span>
+                    </a>
+
+                    <a class="mission-button mission-button-ghost" href="myProfile.html">
+                        나에 대해 알아보기
+                    </a>
+                </div>
+
+                <dl class="mission-metrics" aria-label="포트폴리오 주요 수치">
+                    <div>
+                        <dt>06</dt>
+                        <dd>Projects</dd>
+                    </div>
+                    <div>
+                        <dt>02</dt>
+                        <dd>Awards</dd>
+                    </div>
+                    <div>
+                        <dt>∞</dt>
+                        <dd>Possibility</dd>
+                    </div>
+                </dl>
+            </div>
+
+            <figure class="mission-visual" data-reveal>
+                <div class="orbit orbit-one" aria-hidden="true"></div>
+                <div class="orbit orbit-two" aria-hidden="true"></div>
+
+                <div class="mission-photo-frame">
+                    <span class="photo-index" aria-hidden="true">CW / 26</span>
+                    <img
+                        src="media/myphoto.jpeg"
+                        alt="AI 개발자 임창우"
+                    >
+                </div>
+
+                <figcaption class="mission-status-card">
+                    <span class="status-dot" aria-hidden="true"></span>
+                    <span>
+                        <strong>현재 상태</strong>
+                        새로운 기술을 학습하고 있습니다
+                    </span>
+                </figcaption>
+            </figure>
+        </div>
+
+        <a class="mission-scroll-cue" href="#mainContent">
+            <span>아래로 스크롤해 더 보기</span>
+            <i aria-hidden="true"></i>
+        </a>
     </header>
 
-    <nav aria-label="주요 페이지 메뉴">
-        <a href="myProfile.html">나의 소개</a>
-        <a href="portfolio.html">포트폴리오</a>
-        <a href="myClass.html">강의 시간표</a>
-        <a href="myHoliday.html">휴일 일과</a>
-        <a href="myTrip.html">여행 앨범</a>
-        <a href="comments.html">댓글 게시판</a>
-        
+    <nav class="mission-nav" aria-label="주요 페이지 메뉴">
+        <a class="mission-brand" href="#top" aria-label="메인 화면으로 이동">
+            CW<span>/26</span>
+        </a>
+
+        <div class="mission-nav-links">
+            <a href="myProfile.html">소개</a>
+            <a href="portfolio.html">포트폴리오</a>
+            <a href="myClass.html">강의</a>
+            <a href="myHoliday.html">일상</a>
+            <a href="myTrip.html">여행</a>
+            <a href="comments.html">댓글</a>
+        </div>
+
         <div class="auth-menu">
-            <a
-                href="signUp.html"
-                id="signupLink"
-            >
+            <a href="signUp.html" id="signupLink">
                 회원가입
             </a>
 
-            <a
-                href="login.html"
-                id="loginLink"
-            >
+            <a href="login.html" id="loginLink">
                 로그인
             </a>
 
-            <button
-                type="button"
-                id="logoutButton"
-                hidden
-            >
+            <button type="button" id="logoutButton" hidden>
                 로그아웃
             </button>
         </div>
     </nav>
 
-    <div class="layout">
+    <div class="layout mission-layout" id="mainContent">
         <main class="main-content">
-            <section>
-                <h2>📂 바로가기 메뉴</h2>
-
-                <ul class="shortcut-list">
-                    <li>
-                        <a href="myProfile.html">
-                            👤 나의 소개 보기
-                        </a>
-                    </li>
-
-                    <li>
-                        <a href="portfolio.html">
-                            💼 나의 포트폴리오 보기
-                        </a>
-                    </li>
-
-                    <li>
-                        <a href="myClass.html">
-                            🗓️ 나의 강의 시간표 보기
-                        </a>
-                    </li>
-
-                    <li>
-                        <a href="myHoliday.html">
-                            🏖️ 나의 휴일 일과 보기
-                        </a>
-                    </li>
-
-                    <li>
-                        <a href="myTrip.html">
-                            🌍 나의 여행 앨범 보기
-                        </a>
-                    </li>
-
-                    <li>
-                        <a href="comments.html">
-                            💬 댓글 게시판 보기
-                        </a>
-                    </li>
-                </ul>
-            </section>
-
-            <section>
-                <h2>📌 오늘의 주요 소식</h2>
-
-                <article>
-                    <h3>포트폴리오 페이지 추가</h3>
-
+            <section class="mission-section" data-reveal>
+                <div class="mission-section-heading">
+                    <p class="section-label">01 · EXPLORE</p>
+                    <h2>나의 세계를 탐험하세요.</h2>
                     <p>
-                        프로젝트, 기술 스택, 수상 내역과 자격증을 정리한
-                        포트폴리오 페이지를 새롭게 추가했습니다.
+                        프로젝트부터 여행 기록까지, 하나의 포털 안에
+                        개발자로서의 경험과 일상을 담았습니다.
                     </p>
+                </div>
 
-                    <p>
-                        <small>
-                            작성일: 2026년 7월 15일
-                        </small>
-                    </p>
-                </article>
-            </section>
-
-            <section>
-                <h2>🖼️ 이달의 베스트 사진</h2>
-
-                <figure>
-                    <img
-                        src="media/croatia.jpeg"
-                        alt="크로아티아 여행 풍경"
-                        loading="lazy"
+                <div class="bento-grid">
+                    <a
+                        class="bento-card bento-project"
+                        href="portfolio.html"
+                        data-spotlight
                     >
+                        <span class="bento-number">01</span>
+                        <div>
+                            <p class="bento-label">Featured Work</p>
+                            <h3>AI 프로젝트<br>아카이브</h3>
+                            <p>
+                                멀티에이전트, 컴퓨터 비전,
+                                이상 탐지 연구와 구현 경험
+                            </p>
+                        </div>
 
-                    <figcaption>
-                        크로아티아에서 바라본 아름다운 여행 풍경
-                    </figcaption>
-                </figure>
+                        <div class="system-flow" aria-hidden="true">
+                            <span>DATA</span>
+                            <i></i>
+                            <span>AI</span>
+                            <i></i>
+                            <span>VALUE</span>
+                        </div>
+
+                        <span class="bento-arrow" aria-hidden="true">↗</span>
+                    </a>
+
+                    <a
+                        class="bento-card bento-profile"
+                        href="myProfile.html"
+                        data-spotlight
+                    >
+                        <span class="bento-number">02</span>
+                        <img src="media/myphoto.jpeg" alt="" aria-hidden="true">
+                        <div class="bento-profile-copy">
+                            <p class="bento-label">About Me</p>
+                            <h3>꾸준히 배우고<br>끝까지 만듭니다.</h3>
+                        </div>
+                        <span class="bento-arrow" aria-hidden="true">↗</span>
+                    </a>
+
+                    <a
+                        class="bento-card bento-class"
+                        href="myClass.html"
+                        data-spotlight
+                    >
+                        <span class="bento-number">03</span>
+                        <p class="bento-label">Weekly Class</p>
+                        <h3>배움의<br>타임라인</h3>
+                        <span class="mini-schedule" aria-hidden="true">
+                            <i></i><i></i><i></i><i></i><i></i>
+                        </span>
+                        <span class="bento-arrow" aria-hidden="true">↗</span>
+                    </a>
+
+                    <a
+                        class="bento-card bento-trip"
+                        href="myTrip.html"
+                        data-spotlight
+                    >
+                        <span class="bento-number">04</span>
+                        <div>
+                            <p class="bento-label">Travel Log</p>
+                            <h3>기억하고 싶은<br>여행의 장면들</h3>
+                        </div>
+                        <span class="bento-arrow" aria-hidden="true">↗</span>
+                    </a>
+
+                    <a
+                        class="bento-card bento-holiday"
+                        href="myHoliday.html"
+                        data-spotlight
+                    >
+                        <span class="bento-number">05</span>
+                        <p class="bento-label">My Routine</p>
+                        <h3>나만의<br>충전 방식</h3>
+                        <span class="routine-orbit" aria-hidden="true"></span>
+                        <span class="bento-arrow" aria-hidden="true">↗</span>
+                    </a>
+
+                    <a
+                        class="bento-card bento-comments"
+                        href="comments.html"
+                        data-spotlight
+                    >
+                        <span class="bento-number">06</span>
+                        <p class="bento-label">Guest Book</p>
+                        <h3>한마디를<br>남겨주세요.</h3>
+                        <span class="comment-bubble" aria-hidden="true">···</span>
+                        <span class="bento-arrow" aria-hidden="true">↗</span>
+                    </a>
+                </div>
+            </section>
+
+            <section class="mission-section" data-reveal>
+                <div class="mission-section-heading mission-heading-row">
+                    <div>
+                        <p class="section-label">02 · CURRENT MISSION</p>
+                        <h2>기술을 연결해 경험을 만듭니다.</h2>
+                    </div>
+
+                    <a class="text-link" href="portfolio.html">
+                        모든 프로젝트 보기 ↗
+                    </a>
+                </div>
+
+                <article class="mission-project" data-spotlight>
+                    <div class="mission-project-copy">
+                        <div class="project-state">
+                            <span class="status-dot" aria-hidden="true"></span>
+                            REPRESENTATIVE PROJECT
+                        </div>
+
+                        <h3>멀티에이전트 기반<br>면접 표현 습관 분석</h3>
+
+                        <p>
+                            음성·영상 데이터를 동시에 분석하고,
+                            여러 AI 에이전트가 협력해 면접자에게
+                            구체적인 피드백과 후속 질문을 제공합니다.
+                        </p>
+
+                        <ul class="mission-tags" aria-label="사용 기술">
+                            <li>Whisper</li>
+                            <li>MediaPipe</li>
+                            <li>OpenCV</li>
+                            <li>Multi Agent</li>
+                        </ul>
+                    </div>
+
+                    <div class="agent-map" aria-label="멀티에이전트 처리 과정">
+                        <div class="agent-core">
+                            <span>CORE</span>
+                            <strong>AI</strong>
+                        </div>
+                        <div class="agent-node agent-speech">Speech</div>
+                        <div class="agent-node agent-vision">Vision</div>
+                        <div class="agent-node agent-analysis">Analysis</div>
+                        <div class="agent-node agent-feedback">Feedback</div>
+                    </div>
+                </article>
             </section>
         </main>
 
-        <aside class="sidebar">
-            <section>
-                <h2>🙋 소개</h2>
-
+        <aside class="sidebar mission-sidebar">
+            <section class="identity-card" data-reveal>
+                <div class="identity-top">
+                    <img src="media/myphoto.jpeg" alt="임창우 프로필 사진">
+                    <span class="identity-badge">CW</span>
+                </div>
+                <p class="section-label">IDENTITY</p>
+                <h2>임창우</h2>
                 <p>
-                    전북대학교 소프트웨어공학과에서 공부하고 있으며,
-                    새로운 기술을 배우고 직접 구현하는 것을 좋아합니다.
+                    소프트웨어와 인공지능을 공부하며
+                    아이디어를 실제 시스템으로 구현합니다.
                 </p>
             </section>
 
-            <section
-                id="loginUserInfo"
-                hidden
-            >
-                <h2>🔐 로그인 정보</h2>
-
+            <section id="loginUserInfo" class="login-status-card" hidden>
+                <p class="section-label">SIGNED IN</p>
                 <p>
-                    <strong id="userEmail"></strong>님
-                </p>
-
-                <p>
-                    현재 로그인되어 있습니다.
+                    <strong id="userEmail"></strong>님,<br>
+                    다시 만나 반갑습니다.
                 </p>
             </section>
 
-            <section>
-                <h2>🔗 외부 링크</h2>
+            <section class="live-card" data-reveal>
+                <p class="section-label">LOCAL TIME · DEVICE</p>
+                <time id="missionClock" datetime="">--:--:--</time>
+                <p id="missionDate">대한민국 광주광역시</p>
+            </section>
 
+            <section class="focus-card" data-reveal>
+                <p class="section-label">CURRENT FOCUS</p>
                 <ul>
-                    <li>
-                        <a
-                            href="https://github.com/w-000000"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                        >
-                            GitHub
-                        </a>
-                    </li>
-
-                    <li>
-                        <a
-                            href="https://www.notion.so/"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                        >
-                            Notion
-                        </a>
-                    </li>
-
-                    <li>
-                        <a
-                            href="https://developer.mozilla.org/"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                        >
-                            MDN Web Docs
-                        </a>
-                    </li>
+                    <li><span>01</span> 웹 개발</li>
+                    <li><span>02</span> 인공지능</li>
+                    <li><span>03</span> Physical AI</li>
                 </ul>
             </section>
 
-            <section>
-                <h2>💡 실시간 정보</h2>
-
-                <p>현재 위치: 대한민국 광주광역시 📍</p>
-                <p>관심 분야: 웹 개발, 인공지능, Git</p>
-                <p>현재 학습 과정: SKALA</p>
+            <section class="mission-links" data-reveal>
+                <p class="section-label">CONNECT</p>
+                <a
+                    href="https://github.com/w-000000"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    GitHub <span aria-hidden="true">↗</span>
+                </a>
+                <a
+                    href="https://www.notion.so/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    Notion <span aria-hidden="true">↗</span>
+                </a>
+                <a href="mailto:cwoo6115@jbnu.ac.kr">
+                    Email <span aria-hidden="true">↗</span>
+                </a>
             </section>
         </aside>
     </div>
 
-    <footer>
+    <footer class="mission-footer">
+        <p>BUILDING USEFUL THINGS WITH AI.</p>
         <p>
-            이메일 문의: cwoo6115@jbnu.ac.kr
-        </p>
-
-        <p>
-            <small>
-                © 2026 임창우 포털. HTML과 CSS로 제작되었습니다.
-            </small>
+            <small>© 2026 임창우 · Designed &amp; coded without UI libraries.</small>
         </p>
     </footer>
 
-    <script
-        type="module"
-        src="js/auth-menu.js"
-    ></script>
-    
-    <script
-    type="module"
-    src="js/theme.js"
-    ></script>
-    
+    <script type="module" src="js/auth-menu.js"></script>
+    <script type="module" src="js/theme.js"></script>
+    <script src="js/showcase.js" defer></script>
 </body>
 </html>
