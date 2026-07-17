@@ -807,14 +807,16 @@ html.dark-mode {
     color: var(--mission-ink);
     background: var(--mission-lime);
     border-color: var(--mission-lime);
+    animation: aiNodePulse 2.2s ease-in-out infinite;
 }
 
 .system-flow i {
     position: relative;
     flex: 1;
-    height: 1px;
+    height: 2px;
     overflow: hidden;
-    background: rgba(255, 255, 255, 0.18);
+    background: rgba(255, 255, 255, 0.34);
+    border-radius: 999px;
 }
 
 .system-flow i::after {
@@ -822,8 +824,9 @@ html.dark-mode {
     inset: 0;
     content: "";
     background: var(--mission-lime);
+    box-shadow: 0 0 12px rgba(200, 255, 101, 0.85);
     transform: translateX(-100%);
-    animation: dataFlow 2.6s ease-in-out infinite;
+    animation: dataFlow 2.2s ease-in-out infinite;
 }
 
 .system-flow i:nth-of-type(2)::after {
@@ -833,6 +836,18 @@ html.dark-mode {
 @keyframes dataFlow {
     55%, 100% {
         transform: translateX(100%);
+    }
+}
+
+@keyframes aiNodePulse {
+    0%, 100% {
+        box-shadow: 0 0 0 rgba(200, 255, 101, 0);
+        transform: scale(1);
+    }
+
+    50% {
+        box-shadow: 0 0 26px rgba(200, 255, 101, 0.38);
+        transform: scale(1.08);
     }
 }
 
@@ -989,6 +1004,7 @@ html.dark-mode {
 .mission-project-copy {
     position: relative;
     z-index: 2;
+    min-width: 0;
 }
 
 .project-state {
@@ -1001,9 +1017,14 @@ html.dark-mode {
 .mission-home .mission-project h3 {
     margin: 26px 0 22px;
     color: white;
-    font-size: clamp(38px, 4vw, 64px);
+    font-size: clamp(30px, 2.2vw, 38px);
     line-height: 1.02;
     letter-spacing: -0.055em;
+}
+
+.mission-home .mission-project h3 span {
+    display: block;
+    white-space: nowrap;
 }
 
 .mission-home .mission-project p {
@@ -1625,10 +1646,12 @@ html.dark-mode {
 
 .mission-home .mission-sidebar .bag-card h2 {
     margin: 24px 0 13px;
+    padding: 3px 0 4px;
+    max-width: 100%;
     color: white;
-    font-size: clamp(26px, 2.2vw, 32px);
-    line-height: 0.92;
-    letter-spacing: -0.05em;
+    font-size: clamp(21px, 1.8vw, 27px);
+    line-height: 1.15;
+    letter-spacing: -0.06em;
     white-space: nowrap;
 }
 
@@ -2143,16 +2166,29 @@ html.dark-mode {
 
 .showcase-portfolio .portfolio-intro,
 .showcase-portfolio .goal-message {
+    --spot-x: 50%;
+    --spot-y: 50%;
     position: relative;
     padding: clamp(28px, 4vw, 52px);
     overflow: hidden;
-    color: white;
+    color: var(--inner-text);
     background:
-        radial-gradient(circle at 90% 10%, rgba(119, 124, 255, 0.3), transparent 28%),
-        var(--mission-ink);
-    border: 0;
+        radial-gradient(420px circle at var(--spot-x) var(--spot-y), rgba(119, 124, 255, 0.11), transparent 42%),
+        var(--mission-card);
+    border: 1px solid var(--mission-line);
     border-radius: 28px;
+    box-shadow: none;
+    transition:
+        transform 0.3s cubic-bezier(0.2, 0.7, 0.2, 1),
+        box-shadow 0.3s,
+        border-color 0.3s;
+}
+
+.showcase-portfolio .portfolio-intro:hover,
+.showcase-portfolio .goal-message:hover {
+    border-color: rgba(119, 124, 255, 0.36);
     box-shadow: var(--mission-shadow);
+    transform: translateY(-8px);
 }
 
 .showcase-portfolio .portfolio-intro::after,
@@ -2163,7 +2199,7 @@ html.dark-mode {
     width: 300px;
     height: 300px;
     content: "";
-    border: 1px solid rgba(255, 255, 255, 0.12);
+    border: 1px solid rgba(119, 124, 255, 0.16);
     border-radius: 50%;
 }
 
@@ -2172,7 +2208,7 @@ html.dark-mode {
     position: relative;
     z-index: 1;
     max-width: 880px;
-    color: rgba(255, 255, 255, 0.72);
+    color: var(--mission-muted);
     font-size: 17px;
 }
 
@@ -2215,15 +2251,15 @@ html.dark-mode {
 
 .showcase-portfolio .featured-project {
     padding: clamp(36px, 5vw, 64px);
-    color: white;
+    color: var(--inner-text);
     background:
-        radial-gradient(circle at var(--spot-x) var(--spot-y), rgba(119, 124, 255, 0.24), transparent 30%),
-        var(--mission-ink);
-    border: 1px solid rgba(255, 255, 255, 0.09);
+        radial-gradient(circle at var(--spot-x) var(--spot-y), rgba(119, 124, 255, 0.1), transparent 30%),
+        var(--mission-card);
+    border: 1px solid var(--mission-line);
 }
 
 .showcase-portfolio .featured-project::before {
-    color: rgba(255, 255, 255, 0.42);
+    color: var(--mission-muted);
 }
 
 .showcase-portfolio .featured-project h3,
@@ -2234,7 +2270,7 @@ html.dark-mode {
 
 .showcase-portfolio .featured-project h4,
 .showcase-portfolio .featured-project .project-category {
-    color: var(--mission-lime);
+    color: var(--mission-violet);
 }
 
 .showcase-portfolio .project-heading {
@@ -2391,10 +2427,7 @@ html.dark-mode .mission-home .mission-sidebar section.bag-card {
 }
 
 html.dark-mode .mission-home .live-card,
-html.dark-mode .mission-home .mission-project,
-html.dark-mode .showcase-portfolio .featured-project,
-html.dark-mode .showcase-portfolio .portfolio-intro,
-html.dark-mode .showcase-portfolio .goal-message {
+html.dark-mode .mission-home .mission-project {
     background-color: var(--mission-ink);
 }
 
@@ -2428,6 +2461,11 @@ html.dark-mode .showcase-portfolio .featured-project h3,
 html.dark-mode .showcase-portfolio .featured-project p,
 html.dark-mode .showcase-portfolio .featured-project li {
     color: white;
+}
+
+html.dark-mode .showcase-portfolio .featured-project h4,
+html.dark-mode .showcase-portfolio .featured-project .project-category {
+    color: var(--mission-lime);
 }
 
 html.dark-mode .showcase-portfolio .award-card:first-child,
@@ -2703,7 +2741,7 @@ html.dark-mode .showcase-portfolio .award-card:first-child time {
     }
 
     .mission-home .mission-project h3 {
-        font-size: 39px;
+        font-size: clamp(28px, 8vw, 36px);
     }
 
     .agent-map {
@@ -2766,6 +2804,15 @@ html.dark-mode .showcase-portfolio .award-card:first-child time {
     .mission-scroll-cue i::after,
     .agent-map::after {
         animation: none;
+    }
+
+    .system-flow span:nth-of-type(2) {
+        animation: none;
+    }
+
+    .system-flow i::after {
+        opacity: 0.7;
+        transform: none;
     }
 
     .updown-range i::after {
@@ -3275,17 +3322,26 @@ html.dark-mode .showcase-inner {
 }
 
 .showcase-inner.class-page tbody td {
+    position: relative;
     color: var(--inner-text);
     background: var(--inner-surface);
+    transition:
+        color 0.2s,
+        background 0.2s,
+        box-shadow 0.2s,
+        transform 0.2s;
 }
 
 .showcase-inner.class-page tbody tr:nth-child(even) td {
-    background: var(--inner-soft);
+    background: var(--inner-surface);
 }
 
-.showcase-inner.class-page tbody td:hover {
+.showcase-inner.class-page tbody tr:not(.lunch-row) td:hover {
+    z-index: 2;
     color: var(--inner-text);
     background: rgba(var(--inner-accent-rgb), 0.2);
+    box-shadow: 0 10px 24px rgba(var(--inner-accent-rgb), 0.18);
+    transform: translateY(-3px) scale(1.015);
 }
 
 .showcase-inner.class-page .lunch-row th,
@@ -3617,6 +3673,12 @@ html.dark-mode .showcase-inner.class-page tbody tr:nth-child(even) td,
 html.dark-mode .showcase-inner.class-page tbody th {
     color: var(--inner-text);
     background: var(--inner-soft);
+}
+
+html.dark-mode .showcase-inner.class-page tbody tr:not(.lunch-row) td:hover {
+    color: var(--inner-text);
+    background: rgba(var(--inner-accent-rgb), 0.22);
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.2);
 }
 
 html.dark-mode .showcase-inner input,
