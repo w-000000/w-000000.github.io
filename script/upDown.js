@@ -9,6 +9,95 @@ const upDownGameButton =
 const upDownGameStatus =
     document.querySelector("#upDownGameStatus");
 
+const upDownBestScore =
+    document.querySelector("#upDownBestScore");
+
+const upDownLastScore =
+    document.querySelector("#upDownLastScore");
+
+const upDownPlayCount =
+    document.querySelector("#upDownPlayCount");
+
+const UP_DOWN_STATS_KEY = "upDownGameStats";
+
+function loadUpDownStats() {
+    const defaultStats = {
+        best: null,
+        last: null,
+        plays: 0
+    };
+
+    try {
+        const savedStats = JSON.parse(
+            window.localStorage.getItem(
+                UP_DOWN_STATS_KEY
+            ) || "{}"
+        );
+
+        return {
+            best:
+                Number.isInteger(savedStats.best) &&
+                savedStats.best > 0
+                    ? savedStats.best
+                    : null,
+
+            last:
+                Number.isInteger(savedStats.last) &&
+                savedStats.last > 0
+                    ? savedStats.last
+                    : null,
+
+            plays:
+                Number.isInteger(savedStats.plays) &&
+                savedStats.plays >= 0
+                    ? savedStats.plays
+                    : 0
+        };
+    } catch (error) {
+        console.warn(
+            "Up-Down 기록을 불러오지 못했습니다.",
+            error
+        );
+
+        return defaultStats;
+    }
+}
+
+function saveUpDownStats(stats) {
+    try {
+        window.localStorage.setItem(
+            UP_DOWN_STATS_KEY,
+            JSON.stringify(stats)
+        );
+    } catch (error) {
+        console.warn(
+            "Up-Down 기록을 저장하지 못했습니다.",
+            error
+        );
+    }
+}
+
+function renderUpDownStats(stats) {
+    if (upDownBestScore) {
+        upDownBestScore.textContent =
+            stats.best ?? "--";
+    }
+
+    if (upDownLastScore) {
+        upDownLastScore.textContent =
+            stats.last ?? "--";
+    }
+
+    if (upDownPlayCount) {
+        upDownPlayCount.textContent =
+            stats.plays;
+    }
+}
+
+const upDownStats = loadUpDownStats();
+
+renderUpDownStats(upDownStats);
+
 function updateUpDownStatus(message) {
     if (upDownGameStatus) {
         upDownGameStatus.textContent = message;
@@ -63,10 +152,24 @@ function startUpDownGame() {
             `축하합니다! ${attemptCount}번 만에 맞추셨습니다.`
         );
 
+        const isNewBest =
+            upDownStats.best === null ||
+            attemptCount < upDownStats.best;
+
+        upDownStats.last = attemptCount;
+        upDownStats.plays += 1;
+
+        if (isNewBest) {
+            upDownStats.best = attemptCount;
+        }
+
+        saveUpDownStats(upDownStats);
+        renderUpDownStats(upDownStats);
+
         updateUpDownStatus(
             `CLEAR · ${attemptCount} ATTEMPT${
                 attemptCount === 1 ? "" : "S"
-            }`
+            }${isNewBest ? " · NEW BEST" : ""}`
         );
 
         return;

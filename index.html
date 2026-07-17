@@ -353,6 +353,35 @@
                     정답을 찾을 때까지 힌트가 이어집니다.
                 </p>
 
+                <dl
+                    class="updown-records"
+                    aria-label="이 기기에 저장된 게임 기록"
+                >
+                    <div>
+                        <dt>BEST</dt>
+                        <dd>
+                            <strong id="upDownBestScore">--</strong>
+                            <small>회</small>
+                        </dd>
+                    </div>
+
+                    <div>
+                        <dt>LAST</dt>
+                        <dd>
+                            <strong id="upDownLastScore">--</strong>
+                            <small>회</small>
+                        </dd>
+                    </div>
+
+                    <div>
+                        <dt>PLAYS</dt>
+                        <dd>
+                            <strong id="upDownPlayCount">0</strong>
+                            <small>판</small>
+                        </dd>
+                    </div>
+                </dl>
+
                 <div class="updown-range" aria-hidden="true">
                     <span>01</span>
                     <i></i>
@@ -375,6 +404,10 @@
                     aria-live="polite"
                 >
                     READY · RANGE 01—50
+                </p>
+
+                <p class="updown-storage-note">
+                    DEVICE RECORD · 이 브라우저에 자동 저장
                 </p>
             </section>
 
