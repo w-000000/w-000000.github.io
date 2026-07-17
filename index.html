@@ -143,6 +143,65 @@
     </nav>
 
     <div class="layout mission-layout" id="mainContent">
+        <aside class="sidebar mission-sidebar mission-sidebar-left">
+            <section class="identity-card" data-reveal>
+                <div class="identity-top">
+                    <img src="media/myphoto.jpeg" alt="임창우 프로필 사진">
+                    <span class="identity-badge">CW</span>
+                </div>
+                <p class="section-label">IDENTITY</p>
+                <h2>임창우</h2>
+                <p>
+                    소프트웨어와 인공지능을 공부하며
+                    아이디어를 실제 시스템으로 구현합니다.
+                </p>
+            </section>
+
+            <section id="loginUserInfo" class="login-status-card" hidden>
+                <p class="section-label">SIGNED IN</p>
+                <p>
+                    <strong id="userEmail"></strong>님,<br>
+                    다시 만나 반갑습니다.
+                </p>
+            </section>
+
+            <section class="live-card" data-reveal>
+                <p class="section-label">LOCAL TIME · DEVICE</p>
+                <time id="missionClock" datetime="">--:--:--</time>
+                <p id="missionDate">대한민국 광주광역시</p>
+            </section>
+
+            <section class="mission-links" data-reveal>
+                <p class="section-label">CONNECT</p>
+                <a
+                    href="https://github.com/w-000000"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    GitHub <span aria-hidden="true">↗</span>
+                </a>
+                <a
+                    href="https://www.notion.so/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    Notion <span aria-hidden="true">↗</span>
+                </a>
+                <a href="mailto:cwoo6115@jbnu.ac.kr">
+                    Email <span aria-hidden="true">↗</span>
+                </a>
+            </section>
+
+            <section class="focus-card" data-reveal>
+                <p class="section-label">CURRENT FOCUS</p>
+                <ul>
+                    <li><span>01</span> 인공지능</li>
+                    <li><span>02</span> 서비스 개발</li>
+                    <li><span>03</span> 데이터 분석</li>
+                </ul>
+            </section>
+        </aside>
+
         <main class="main-content">
             <section class="mission-section" data-reveal>
                 <div class="mission-section-heading">
@@ -297,43 +356,7 @@
             </section>
         </main>
 
-        <aside class="sidebar mission-sidebar">
-            <section class="identity-card" data-reveal>
-                <div class="identity-top">
-                    <img src="media/myphoto.jpeg" alt="임창우 프로필 사진">
-                    <span class="identity-badge">CW</span>
-                </div>
-                <p class="section-label">IDENTITY</p>
-                <h2>임창우</h2>
-                <p>
-                    소프트웨어와 인공지능을 공부하며
-                    아이디어를 실제 시스템으로 구현합니다.
-                </p>
-            </section>
-
-            <section id="loginUserInfo" class="login-status-card" hidden>
-                <p class="section-label">SIGNED IN</p>
-                <p>
-                    <strong id="userEmail"></strong>님,<br>
-                    다시 만나 반갑습니다.
-                </p>
-            </section>
-
-            <section class="live-card" data-reveal>
-                <p class="section-label">LOCAL TIME · DEVICE</p>
-                <time id="missionClock" datetime="">--:--:--</time>
-                <p id="missionDate">대한민국 광주광역시</p>
-            </section>
-
-            <section class="focus-card" data-reveal>
-                <p class="section-label">CURRENT FOCUS</p>
-                <ul>
-                    <li><span>01</span> 웹 개발</li>
-                    <li><span>02</span> 인공지능</li>
-                    <li><span>03</span> Physical AI</li>
-                </ul>
-            </section>
-
+        <aside class="sidebar mission-sidebar mission-sidebar-right">
             <section
                 class="updown-card"
                 data-reveal
@@ -411,26 +434,184 @@
                 </p>
             </section>
 
-            <section class="mission-links" data-reveal>
-                <p class="section-label">CONNECT</p>
-                <a
-                    href="https://github.com/w-000000"
-                    target="_blank"
-                    rel="noopener noreferrer"
+            <section
+                class="grade-card"
+                data-reveal
+                data-spotlight
+            >
+                <div class="grade-card-heading">
+                    <p class="section-label">JS CHALLENGE · 02</p>
+                    <span>3 SUBJECTS</span>
+                </div>
+
+                <h2>GRADE CHECK</h2>
+
+                <p class="grade-description">
+                    세 과목의 점수를 입력하면 평균과 등급을 계산합니다.
+                </p>
+
+                <div class="grade-subjects" aria-label="계산 과목">
+                    <span>HTML</span>
+                    <span>CSS</span>
+                    <span>JavaScript</span>
+                </div>
+
+                <dl
+                    class="grade-result"
+                    aria-label="최근 성적 계산 결과"
                 >
-                    GitHub <span aria-hidden="true">↗</span>
-                </a>
-                <a
-                    href="https://www.notion.so/"
-                    target="_blank"
-                    rel="noopener noreferrer"
+                    <div>
+                        <dt>AVERAGE</dt>
+                        <dd id="gradeAverage">--</dd>
+                    </div>
+
+                    <div>
+                        <dt>GRADE</dt>
+                        <dd id="gradeLetter">--</dd>
+                    </div>
+                </dl>
+
+                <button
+                    type="button"
+                    id="gradeCalculatorButton"
+                    class="grade-start-button"
                 >
-                    Notion <span aria-hidden="true">↗</span>
-                </a>
-                <a href="mailto:cwoo6115@jbnu.ac.kr">
-                    Email <span aria-hidden="true">↗</span>
-                </a>
+                    <span>성적 계산하기</span>
+                    <span aria-hidden="true">↗</span>
+                </button>
+
+                <p
+                    class="grade-status"
+                    id="gradeCalculatorStatus"
+                    role="status"
+                    aria-live="polite"
+                >
+                    READY · SCORE RANGE 0—100
+                </p>
             </section>
+
+            <section
+                class="bag-card"
+                data-reveal
+                data-spotlight
+            >
+                <div class="bag-card-heading">
+                    <p class="section-label">JS CHALLENGE · 03</p>
+                    <span>OBJECT ARRAY</span>
+                </div>
+
+                <h2>임창우님의 가방</h2>
+
+                <p class="bag-description">
+                    임창우 님의 가방 속 물품을 소개합니다.
+                </p>
+
+                <div
+                    class="bag-owner-controls"
+                    id="bagOwnerControls"
+                >
+                    <button
+                        type="button"
+                        class="bag-edit-toggle"
+                        id="bagEditToggleButton"
+                    >
+                        가방 속 물품 변경
+                    </button>
+
+                    <ul
+                        class="bag-preview"
+                        id="bagPreview"
+                        aria-label="가방 속 물품 미리보기"
+                        hidden
+                    ></ul>
+
+                    <form class="bag-editor" id="bagEditor" hidden>
+                        <input
+                            type="hidden"
+                            id="bagItemIndex"
+                            value=""
+                        >
+
+                        <div class="bag-editor-fields">
+                            <label>
+                                <span>아이콘</span>
+                                <input
+                                    type="text"
+                                    id="bagItemIcon"
+                                    maxlength="8"
+                                    placeholder="🎒"
+                                    required
+                                >
+                            </label>
+
+                            <label>
+                                <span>물품명</span>
+                                <input
+                                    type="text"
+                                    id="bagItemName"
+                                    maxlength="30"
+                                    placeholder="물품 이름"
+                                    required
+                                >
+                            </label>
+
+                            <label>
+                                <span>수량</span>
+                                <input
+                                    type="number"
+                                    id="bagItemCount"
+                                    min="1"
+                                    max="99"
+                                    value="1"
+                                    required
+                                >
+                            </label>
+                        </div>
+
+                        <div class="bag-editor-actions">
+                            <button type="submit" id="bagSaveButton">
+                                물품 추가
+                            </button>
+                            <button
+                                type="button"
+                                id="bagDeleteButton"
+                                hidden
+                            >
+                                삭제
+                            </button>
+                            <button type="button" id="bagCancelButton">
+                                취소
+                            </button>
+                        </div>
+
+                        <p
+                            class="bag-editor-message"
+                            id="bagEditorMessage"
+                            role="status"
+                            aria-live="polite"
+                        ></p>
+                    </form>
+                </div>
+
+                <button
+                    type="button"
+                    id="showMyBagButton"
+                    class="bag-open-button"
+                >
+                    <span>내 가방 열어보기</span>
+                    <span aria-hidden="true">↗</span>
+                </button>
+
+                <p
+                    class="bag-status"
+                    id="bagStatus"
+                    role="status"
+                    aria-live="polite"
+                >
+                    READY · PERSONAL INVENTORY
+                </p>
+            </section>
+
         </aside>
     </div>
 
@@ -445,5 +626,7 @@
     <script type="module" src="js/theme.js"></script>
     <script src="js/showcase.js" defer></script>
     <script src="script/upDown.js" defer></script>
+    <script src="script/grade.js" defer></script>
+    <script type="module" src="script/bag.js"></script>
 </body>
 </html>

@@ -561,9 +561,10 @@ html.dark-mode {
 /* 메인 콘텐츠 */
 .mission-home .mission-layout {
     display: grid;
-    grid-template-columns: minmax(0, 1fr) 300px;
+    grid-template-columns: 280px minmax(0, 1fr) 300px;
+    grid-template-areas: "left main right";
     gap: 32px;
-    width: min(1420px, calc(100% - 48px));
+    width: min(1640px, calc(100% - 48px));
     max-width: none;
     margin: 74px auto;
 }
@@ -585,6 +586,19 @@ html.dark-mode {
     display: grid;
     align-self: start;
     gap: 16px;
+}
+
+.mission-home .mission-sidebar-left {
+    grid-area: left;
+}
+
+.mission-home .main-content {
+    grid-area: main;
+    min-width: 0;
+}
+
+.mission-home .mission-sidebar-right {
+    grid-area: right;
 }
 
 .mission-home .mission-section {
@@ -1242,7 +1256,7 @@ html.dark-mode {
 .mission-home .updown-card-heading > span {
     padding: 6px 9px;
     color: var(--mission-lime);
-    font-size: 9px;
+    font-size: 11px;
     font-weight: 950;
     letter-spacing: 0.12em;
     border: 1px solid rgba(200, 255, 101, 0.28);
@@ -1393,6 +1407,463 @@ html.dark-mode {
     font-size: 7px;
     font-weight: 800;
     letter-spacing: 0.08em;
+}
+
+/* JavaScript 과제: 성적 계산기 */
+.mission-home .mission-sidebar .grade-card {
+    --spot-x: 50%;
+    --spot-y: 50%;
+    position: relative;
+    overflow: hidden;
+    color: white;
+    background:
+        radial-gradient(
+            circle at var(--spot-x) var(--spot-y),
+            rgba(255, 137, 95, 0.22),
+            transparent 38%
+        ),
+        linear-gradient(145deg, #151b31, #25204a);
+    border-color: rgba(255, 255, 255, 0.1);
+    isolation: isolate;
+}
+
+.mission-home .grade-card::after {
+    position: absolute;
+    right: -44px;
+    bottom: -70px;
+    z-index: -1;
+    color: transparent;
+    font-size: 150px;
+    font-weight: 950;
+    line-height: 1;
+    content: "A";
+    -webkit-text-stroke: 1px rgba(255, 137, 95, 0.2);
+}
+
+.grade-card-heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: nowrap;
+    gap: 8px;
+}
+
+.mission-home .grade-card-heading .section-label {
+    flex: 1 1 auto;
+    min-width: 0;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    white-space: nowrap;
+}
+
+.mission-home .grade-card-heading > span {
+    flex: 0 0 auto;
+    padding: 6px 9px;
+    color: #ffad8f;
+    font-size: 11px;
+    font-weight: 950;
+    letter-spacing: 0.1em;
+    white-space: nowrap;
+    border: 1px solid rgba(255, 137, 95, 0.3);
+    border-radius: 999px;
+}
+
+.mission-home .mission-sidebar .grade-card h2 {
+    margin: 24px 0 13px;
+    color: white;
+    font-size: clamp(30px, 3.2vw, 42px);
+    line-height: 0.95;
+    letter-spacing: -0.07em;
+}
+
+.mission-home .mission-sidebar .grade-description {
+    color: rgba(255, 255, 255, 0.56);
+    line-height: 1.65;
+}
+
+.grade-subjects {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 20px;
+}
+
+.grade-subjects span {
+    padding: 7px 9px;
+    color: rgba(255, 255, 255, 0.72);
+    font-size: 9px;
+    font-weight: 900;
+    border: 1px solid rgba(255, 255, 255, 0.13);
+    border-radius: 999px;
+}
+
+.grade-result {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px;
+    margin: 16px 0 18px;
+}
+
+.grade-result > div {
+    padding: 13px;
+    background: rgba(255, 255, 255, 0.07);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 13px;
+}
+
+.grade-result dt {
+    color: rgba(255, 255, 255, 0.55);
+    font-size: 9px;
+    font-weight: 950;
+    line-height: 1;
+    letter-spacing: 0.08em;
+}
+
+.grade-result dd {
+    margin: 9px 0 0;
+    color: white;
+    font-size: 27px;
+    font-weight: 950;
+    line-height: 1;
+}
+
+.mission-home .grade-start-button {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    margin: 0;
+    padding: 13px 16px;
+    color: var(--mission-ink);
+    font-size: 12px;
+    font-weight: 950;
+    background: #ff9a75;
+    border: 0;
+    border-radius: 12px;
+    box-shadow: none;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.mission-home .grade-start-button:hover {
+    color: var(--mission-ink);
+    background: #ffad8f;
+    transform: translateY(-3px);
+    box-shadow: 0 12px 24px rgba(255, 137, 95, 0.16);
+}
+
+.mission-home .grade-start-button:focus-visible {
+    outline: 3px solid white;
+    outline-offset: 3px;
+}
+
+.mission-home .mission-sidebar .grade-status {
+    margin-top: 12px;
+    color: rgba(255, 255, 255, 0.4);
+    font-size: 8px;
+    font-weight: 900;
+    letter-spacing: 0.1em;
+}
+
+/* JavaScript 과제: 내 가방 보기 */
+.mission-home .mission-sidebar .bag-card {
+    --spot-x: 50%;
+    --spot-y: 50%;
+    position: relative;
+    overflow: hidden;
+    color: white;
+    background:
+        radial-gradient(
+            circle at var(--spot-x) var(--spot-y),
+            rgba(99, 230, 220, 0.2),
+            transparent 38%
+        ),
+        linear-gradient(145deg, #10192d, #12333b);
+    border-color: rgba(255, 255, 255, 0.1);
+    isolation: isolate;
+}
+
+.mission-home .bag-card::after {
+    position: absolute;
+    right: -40px;
+    bottom: -58px;
+    z-index: -1;
+    color: transparent;
+    font-size: 130px;
+    font-weight: 950;
+    line-height: 1;
+    content: "03";
+    -webkit-text-stroke: 1px rgba(99, 230, 220, 0.17);
+}
+
+.bag-card-heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: nowrap;
+    gap: 7px;
+}
+
+.mission-home .bag-card-heading .section-label {
+    flex: 1 1 auto;
+    min-width: 0;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    white-space: nowrap;
+}
+
+.mission-home .bag-card-heading > span {
+    flex: 0 0 auto;
+    padding: 6px 8px;
+    color: #8ff3eb;
+    font-size: 11px;
+    font-weight: 950;
+    letter-spacing: 0.08em;
+    white-space: nowrap;
+    border: 1px solid rgba(99, 230, 220, 0.3);
+    border-radius: 999px;
+}
+
+.mission-home .mission-sidebar .bag-card h2 {
+    margin: 24px 0 13px;
+    color: white;
+    font-size: clamp(26px, 2.2vw, 32px);
+    line-height: 0.92;
+    letter-spacing: -0.05em;
+    white-space: nowrap;
+}
+
+.mission-home .mission-sidebar .bag-description {
+    color: rgba(255, 255, 255, 0.56);
+    line-height: 1.65;
+}
+
+.bag-preview {
+    display: grid;
+    gap: 7px;
+    margin: 20px 0 18px;
+    padding: 0;
+    list-style: none;
+}
+
+.bag-preview[hidden] {
+    display: none;
+}
+
+.bag-preview li {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 9px 11px;
+    color: rgba(255, 255, 255, 0.78);
+    font-size: 10px;
+    font-weight: 800;
+    background: rgba(255, 255, 255, 0.065);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 11px;
+}
+
+.bag-preview strong {
+    position: relative;
+    left: -20px;
+    flex: 0 0 auto;
+    width: 26px;
+    margin-right: 8px;
+    color: #8ff3eb;
+    font-size: 9px;
+    text-align: center;
+}
+
+.bag-item-name {
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.bag-item-actions {
+    display: flex;
+    flex: 0 0 auto;
+    align-items: center;
+    gap: 7px;
+}
+
+.mission-home .bag-inline-edit {
+    margin: 0;
+    padding: 4px 7px;
+    color: #8ff3eb;
+    font-size: 8px;
+    font-weight: 900;
+    background: rgba(99, 230, 220, 0.08);
+    border: 1px solid rgba(99, 230, 220, 0.3);
+    border-radius: 999px;
+    box-shadow: none;
+}
+
+.mission-home .bag-inline-edit:hover {
+    color: var(--mission-ink);
+    background: #8ff3eb;
+}
+
+.bag-empty-item {
+    justify-content: center !important;
+    color: rgba(255, 255, 255, 0.52) !important;
+}
+
+.bag-owner-controls {
+    margin: 8px 0 18px;
+    padding: 10px;
+    background: rgba(5, 12, 27, 0.58);
+    border: 1px solid rgba(99, 230, 220, 0.2);
+    border-radius: 12px;
+}
+
+.bag-owner-controls[hidden],
+.bag-editor[hidden],
+.bag-editor-actions button[hidden] {
+    display: none;
+}
+
+.mission-home .bag-edit-toggle {
+    width: 100%;
+    margin: 0;
+    padding: 9px 10px;
+    color: #8ff3eb;
+    font-size: 9px;
+    font-weight: 950;
+    letter-spacing: 0.03em;
+    background: rgba(99, 230, 220, 0.07);
+    border: 1px solid rgba(99, 230, 220, 0.26);
+    border-radius: 9px;
+    box-shadow: none;
+}
+
+.mission-home .bag-edit-toggle:hover {
+    color: var(--mission-ink);
+    background: #8ff3eb;
+}
+
+.bag-editor {
+    display: grid;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.bag-editor-fields {
+    display: grid;
+    gap: 8px;
+}
+
+.bag-editor label {
+    display: grid;
+    gap: 4px;
+    min-width: 0;
+    color: rgba(255, 255, 255, 0.54);
+    font-size: 8px;
+    font-weight: 900;
+    letter-spacing: 0.04em;
+}
+
+.mission-home .bag-editor input {
+    width: 100%;
+    min-width: 0;
+    margin: 0;
+    padding: 8px 9px;
+    color: white;
+    font-size: 10px;
+    font-weight: 800;
+    background: rgba(255, 255, 255, 0.07);
+    border: 1px solid rgba(255, 255, 255, 0.13);
+    border-radius: 8px;
+    box-shadow: none;
+}
+
+.mission-home .bag-editor input:focus {
+    outline: 2px solid #63e6dc;
+    outline-offset: 1px;
+}
+
+.bag-editor-actions {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 5px;
+}
+
+.mission-home .bag-editor-actions button {
+    min-width: 0;
+    margin: 0;
+    padding: 8px 4px;
+    color: white;
+    font-size: 8px;
+    font-weight: 950;
+    border-radius: 8px;
+    box-shadow: none;
+}
+
+.mission-home #bagSaveButton {
+    color: var(--mission-ink);
+    background: #63e6dc;
+    border: 1px solid #63e6dc;
+}
+
+.mission-home #bagDeleteButton {
+    background: rgba(255, 116, 116, 0.15);
+    border: 1px solid rgba(255, 116, 116, 0.38);
+}
+
+.mission-home #bagCancelButton {
+    background: rgba(255, 255, 255, 0.07);
+    border: 1px solid rgba(255, 255, 255, 0.14);
+}
+
+.bag-editor-message {
+    min-height: 1.4em;
+    margin: 0;
+    color: #8ff3eb;
+    font-size: 8px;
+    font-weight: 800;
+    line-height: 1.4;
+}
+
+.bag-editor-message.is-error {
+    color: #ff9b9b;
+}
+
+.mission-home .bag-open-button {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    margin: 0;
+    padding: 13px 16px;
+    color: var(--mission-ink);
+    font-size: 12px;
+    font-weight: 950;
+    background: #63e6dc;
+    border: 0;
+    border-radius: 12px;
+    box-shadow: none;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.mission-home .bag-open-button:hover {
+    color: var(--mission-ink);
+    background: #8ff3eb;
+    transform: translateY(-3px);
+    box-shadow: 0 12px 24px rgba(99, 230, 220, 0.16);
+}
+
+.mission-home .bag-open-button:focus-visible {
+    outline: 3px solid white;
+    outline-offset: 3px;
+}
+
+.mission-home .mission-sidebar .bag-status {
+    margin-top: 12px;
+    color: rgba(255, 255, 255, 0.4);
+    font-size: 8px;
+    font-weight: 900;
+    letter-spacing: 0.09em;
 }
 
 .mission-links {
@@ -1897,6 +2368,28 @@ html.dark-mode .mission-home .mission-sidebar section.updown-card {
     border-color: rgba(255, 255, 255, 0.1);
 }
 
+html.dark-mode .mission-home .mission-sidebar section.grade-card {
+    background:
+        radial-gradient(
+            circle at var(--spot-x) var(--spot-y),
+            rgba(255, 137, 95, 0.22),
+            transparent 38%
+        ),
+        linear-gradient(145deg, #151b31, #25204a);
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+html.dark-mode .mission-home .mission-sidebar section.bag-card {
+    background:
+        radial-gradient(
+            circle at var(--spot-x) var(--spot-y),
+            rgba(99, 230, 220, 0.2),
+            transparent 38%
+        ),
+        linear-gradient(145deg, #10192d, #12333b);
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
 html.dark-mode .mission-home .live-card,
 html.dark-mode .mission-home .mission-project,
 html.dark-mode .showcase-portfolio .featured-project,
@@ -1982,6 +2475,10 @@ html.dark-mode .showcase-portfolio .award-card:first-child time {
 
     .mission-home .mission-layout {
         grid-template-columns: 1fr;
+        grid-template-areas:
+            "main"
+            "left"
+            "right";
     }
 
     .mission-home .mission-sidebar {
