@@ -111,10 +111,6 @@ skala-front/
 
 저장소를 내려받은 후 VS Code의 Live Server로 `home.html`을 실행하면 입장 화면부터 전체 기능을 확인할 수 있습니다.
 
-## MY BAG 관리자 보안 규칙
-
-MY BAG 편집 화면은 Firebase에 `cwoo6115@jbnu.ac.kr`로 로그인한 경우에만 표시됩니다. 실제 데이터 변경도 해당 계정만 허용하려면 Firebase Console의 기존 Firestore 규칙 안에 아래 `match` 블록을 추가하고 게시해야 합니다.
-
 ```text
 match /portfolioData/myBag {
   allow read: if true;

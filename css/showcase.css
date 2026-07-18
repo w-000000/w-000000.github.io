@@ -2423,6 +2423,9 @@ html.dark-mode {
 }
 
 .showcase-portfolio .portfolio-hero h1 span {
+    display: block;
+    font-size: 0.9em;
+    white-space: nowrap;
     color: transparent;
     background: linear-gradient(90deg, var(--mission-lime), var(--mission-violet));
     background-clip: text;
@@ -3021,6 +3024,14 @@ html.dark-mode .showcase-portfolio .award-card:first-child time {
     .showcase-portfolio .portfolio-hero h1 {
         font-size: clamp(44px, 13.5vw, 68px);
         letter-spacing: -0.06em;
+    }
+
+    .showcase-portfolio .portfolio-hero h1 {
+        font-size: clamp(38px, 10vw, 52px);
+    }
+
+    .showcase-portfolio .portfolio-hero h1 span {
+        font-size: clamp(28px, 8.4vw, 42px);
     }
 
     .mission-actions {
