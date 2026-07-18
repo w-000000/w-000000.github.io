@@ -1889,7 +1889,7 @@ html.dark-mode {
     letter-spacing: 0.09em;
 }
 
-/* 브라우저 실시간 위치 정보 */
+/* 고정 위치 정보 */
 .mission-home .mission-sidebar .location-card {
     --spot-x: 50%;
     --spot-y: 50%;
@@ -2010,53 +2010,6 @@ html.dark-mode {
 
 .location-card.is-active .current-location-panel strong {
     color: var(--location-accent);
-}
-
-.location-card.is-error .current-location-panel {
-    border-color: rgba(255, 155, 155, 0.24);
-}
-
-.location-card.is-error .current-location-panel strong,
-.location-card.is-error .location-details {
-    color: #ffb1b1;
-}
-
-.mission-home .location-refresh-button {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    width: 100%;
-    margin: 12px 0 0;
-    padding: 11px 14px;
-    color: var(--mission-ink);
-    font-size: 10px;
-    font-weight: 950;
-    background: var(--location-accent);
-    border: 0;
-    border-radius: 11px;
-    box-shadow: none;
-    transition: transform 0.2s, box-shadow 0.2s;
-}
-
-.mission-home .location-refresh-button:hover {
-    color: var(--mission-ink);
-    background: var(--location-accent);
-    transform: translateY(-3px);
-    box-shadow: 0 12px 24px rgba(200, 255, 101, 0.15);
-}
-
-.mission-home .location-refresh-button:focus-visible {
-    outline: 3px solid white;
-    outline-offset: 3px;
-}
-
-.mission-home .mission-sidebar .location-privacy {
-    margin-top: 9px;
-    color: rgba(255, 255, 255, 0.34);
-    font-size: 7px;
-    font-weight: 800;
-    line-height: 1.5;
-    letter-spacing: 0.035em;
 }
 
 @keyframes locationPulse {
