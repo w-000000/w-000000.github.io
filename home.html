@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="개발자 임창우의 개인 포털로 입장하는 시작 화면"
+    >
+
+    <title>임창우 포트폴리오 | Launch</title>
+
+    <link rel="prefetch" href="index.html">
+    <link rel="stylesheet" href="css/entry.css">
+</head>
+
+<body class="entry-page">
+    <div class="entry-stars" aria-hidden="true"></div>
+    <div class="entry-grid" aria-hidden="true"></div>
+
+    <main class="entry-shell" id="entryShell">
+        <nav class="entry-nav" aria-label="입장 화면 정보">
+            <a class="entry-brand" href="index.html">
+                CW<span>/26</span>
+            </a>
+
+            <p class="entry-status">
+                <span aria-hidden="true"></span>
+                SYSTEM READY
+            </p>
+        </nav>
+
+        <section class="entry-content">
+            <div class="entry-copy">
+                <p class="entry-kicker">
+                    PERSONAL UNIVERSE · PORTFOLIO
+                </p>
+
+                <h1>
+                    <span>READY TO</span>
+                    <strong>EXPLORE?</strong>
+                </h1>
+
+                <p class="entry-description">
+                    아이디어를 가능성으로 바꾸는 개발자 임창우의 공간입니다.
+                    로켓을 발사하고 프로젝트와 기록을 탐험해 보세요.
+                </p>
+
+                <button
+                    class="entry-button"
+                    id="enterButton"
+                    type="button"
+                    aria-label="임창우님의 공간으로 입장"
+                >
+                    <span class="entry-button-label">임창우님의 공간으로 입장</span>
+                    <span class="entry-button-icon" aria-hidden="true">↗</span>
+                </button>
+
+                <p class="entry-sequence" id="entrySequence" aria-live="polite">
+                    버튼 클릭 또는 키보드의 아무 키나 눌러 입장하세요.
+                </p>
+            </div>
+
+            <div class="launch-visual" aria-hidden="true">
+                <span class="launch-index">26</span>
+                <div class="launch-orbit launch-orbit-outer"></div>
+                <div class="launch-orbit launch-orbit-inner"></div>
+                <div class="launch-planet"></div>
+
+                <div class="entry-rocket" id="entryRocket">
+                    <div class="rocket-body">
+                        <span class="rocket-window"></span>
+                        <span class="rocket-wing rocket-wing-left"></span>
+                        <span class="rocket-wing rocket-wing-right"></span>
+                        <span class="rocket-flame"></span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <footer class="entry-footer">
+            <p>W-000000 · GITHUB UNIVERSE</p>
+            <p>PRESS ENTER OR CLICK TO LAUNCH</p>
+        </footer>
+    </main>
+
+    <div class="entry-wipe" aria-hidden="true"></div>
+
+    <script src="js/entry.js" defer></script>
+</body>
+</html>
