@@ -2424,7 +2424,9 @@ html.dark-mode {
 
 .showcase-portfolio .portfolio-hero h1 span {
     display: block;
+    margin-top: 0.18em;
     font-size: 0.9em;
+    line-height: 1.02;
     white-space: nowrap;
     color: transparent;
     background: linear-gradient(90deg, var(--mission-lime), var(--mission-violet));
