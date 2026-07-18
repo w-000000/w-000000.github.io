@@ -60,7 +60,7 @@ const SITE_CONTEXT = `
 function corsHeaders(origin) {
     return {
         "Access-Control-Allow-Origin": origin,
-        "Access-Control-Allow-Methods": "POST, OPTIONS",
+        "Access-Control-Allow-Methods": "GET, POST, OPTIONS",
         "Access-Control-Allow-Headers": "Content-Type",
         "Vary": "Origin"
     };
@@ -91,8 +91,16 @@ export default {
             });
         }
 
+        if (request.method === "GET") {
+            return jsonResponse(
+                { now: new Date().toISOString() },
+                200,
+                origin
+            );
+        }
+
         if (request.method !== "POST") {
-            return jsonResponse({ error: "POST 요청만 지원합니다." }, 405, origin);
+            return jsonResponse({ error: "지원하지 않는 요청입니다." }, 405, origin);
         }
 
         const body = await request.json().catch(() => null);

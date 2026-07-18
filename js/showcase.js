@@ -90,19 +90,57 @@ spotlightElements.forEach((element) => {
     );
 });
 
-/* 사용자의 컴퓨터 시간대를 따르는 실시간 시계 */
+/* Cloudflare 표준시를 기준으로 표시하는 한국 표준시 */
 const missionClock =
     document.querySelector("#missionClock");
 
 const missionDate =
     document.querySelector("#missionDate");
 
+const missionTimeEndpoint =
+    "https://cw-ai-guide.changwoo-ai.workers.dev";
+
+let missionTimeOffset = 0;
+
+async function syncMissionKoreaTime() {
+    if (!missionClock || !missionDate) {
+        return;
+    }
+
+    const requestStartedAt = Date.now();
+
+    try {
+        const response = await fetch(
+            missionTimeEndpoint,
+            { cache: "no-store" }
+        );
+
+        if (!response.ok) {
+            throw new Error("표준시 응답 오류");
+        }
+
+        const data = await response.json();
+        const requestFinishedAt = Date.now();
+        const estimatedLocalTime =
+            (requestStartedAt + requestFinishedAt) / 2;
+
+        missionTimeOffset =
+            Date.parse(data.now) - estimatedLocalTime;
+
+        updateMissionClock();
+    } catch (error) {
+        missionTimeOffset = 0;
+    }
+}
+
 function updateMissionClock() {
     if (!missionClock || !missionDate) {
         return;
     }
 
-    const now = new Date();
+    const now = new Date(
+        Date.now() + missionTimeOffset
+    );
 
     missionClock.textContent =
         new Intl.DateTimeFormat(
@@ -111,7 +149,8 @@ function updateMissionClock() {
                 hour: "2-digit",
                 minute: "2-digit",
                 second: "2-digit",
-                hour12: false
+                hour12: false,
+                timeZone: "Asia/Seoul"
             }
         ).format(now);
 
@@ -125,17 +164,24 @@ function updateMissionClock() {
                 year: "numeric",
                 month: "long",
                 day: "numeric",
-                weekday: "short"
+                weekday: "short",
+                timeZone: "Asia/Seoul"
             }
         ).format(now);
 }
 
 updateMissionClock();
+syncMissionKoreaTime();
 
 if (missionClock) {
     window.setInterval(
         updateMissionClock,
         1000
+    );
+
+    window.setInterval(
+        syncMissionKoreaTime,
+        60 * 60 * 1000
     );
 }
 
